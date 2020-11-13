@@ -94,7 +94,6 @@ __6.1 Class Loader__
  - .class에서 바이트 코드를 읽고 메모리에 저장한다.
  - class loading에는 Loading, Linking, initialzing 단계로 나뉜다.
 
- 
  |단계|설명|
  |---|---| 
  |loading|class를 읽어오는 과정|
@@ -115,6 +114,7 @@ __6.2 memory__
 
 
  __6.3 Excution Engine__
+
 |엔진|설명|
 |---|---|
 |interpreter|바이트코드를 한줄씩 실행한다.|

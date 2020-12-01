@@ -181,3 +181,223 @@ for (...) {
 ```
 
 ---
+
+### 과제 0. JUnit 5 학습하세요.
+
+__&#8251; JUnit4에 대하여 잘 알지 못하기 때문에 JUnit5 위주로 작성하였다. &#8251;__
+
+&nbsp; Spring Boot 2.2.x는 JUnit4가 아닌 JUnit5를 기본으로 제공한다. JUnit5 Java Test framework는 3가지의 컴포넌트로 구성되어 있다.
+
+ - JUnit Platform: JUnit Platform은 JVM에서 테스트 프레임워크를 시작하기 위한 기초적인 역할을 수행한다. 추가적으로 테스트 개발을 위한 API를 제공한다.
+
+ - JUnit Jupiter: JUnit5에서 테스트 및 Extension을 작성하기 위한 TestEngine을 제공한다.
+
+ - JUnit Vintage: 하위 호환성을 위한 TestEngine이다. JUnit4, JUnit3를 실행할 수 있다.
+
+&nbsp; JUnit5를 사용하기 위해서는 JDK 8 버전 이상을 사용해야 한다.
+
+#### life cycle
+
+&nbsp; Junit5에는 다양한 어노테이션을 활용하여 life cycle를 사용한다.
+
+ - @BeforeAll: 모든 테스트 실행 전 최초에 한번 실행한다.
+ - @BeforeEach: 각각의 테스트를 실행하기 전에 실행한다.
+ - @Test: 테스트를 실행한다.
+ - @AfterEach: 각각의 테스트를 종료한 후 실행한다.
+ - @AfterAll: 모든 테스트 종류 후 마지막에 실행한다.
+ - @Disabled: 테스트를 수행하지 않는다.
+ - @DisplayName: 테스트의 이름을 설정한다. 
+
+__표준 테스트 클래스__
+```java
+class StandardTests {
+
+    @BeforeAll
+    static void initAll() {
+    }
+
+    @BeforeEach
+    void init() {
+    }
+
+    @Test
+    void succeedingTest() {
+    }
+
+    @Test
+    void failingTest() {
+        fail("a failing test");
+    }
+
+    @Test
+    @Disabled("for demonstration purposes")
+    void skippedTest() {
+        // not executed
+    }
+
+    @Test
+    void abortedTest() {
+        assumeTrue("abc".contains("Z"));
+        fail("test should have been aborted");
+    }
+
+    @AfterEach
+    void tearDown() {
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+    }
+
+} 
+```
+참고 : [https://junit.org/junit5/docs/current/user-guide/#overview-what-is-junit-5](https://junit.org/junit5/docs/current/user-guide/#overview-what-is-junit-5)
+
+__displayName__
+
+```java
+@DisplayName("A special test case")
+class DisplayNameDemo {
+
+    @Test
+    @DisplayName("Custom test name containing spaces")
+    void testWithDisplayNameContainingSpaces() {
+    }
+
+    @Test
+    @DisplayName("╯°□°）╯")
+    void testWithDisplayNameContainingSpecialCharacters() {
+    }
+
+    @Test
+    @DisplayName("😱")
+    void testWithDisplayNameContainingEmoji() {
+    }
+
+}
+```
+&nbsp; @displayName은 문자열 뿐만아니라 공백, 특수 문자, 이모지 등을 사용하여 선언할 수 있다.
+
+참고 : [https://junit.org/junit5/docs/current/user-guide/#overview-what-is-junit-5](https://junit.org/junit5/docs/current/user-guide/#overview-what-is-junit-5)
+
+#### Assertions
+
+&nbsp; JUnit4가 가지고 있는 많은 assertion 메소드와 함께 제공되고, Java 8 람다식과 함께 사용하기에 적합한 몇 가지가 추가되었다. 모든 JUnit Jupiter Assertions 클래스는 static 메소드이다.
+
+```java
+class AssertionsDemo {
+
+    private final Calculator calculator = new Calculator();
+
+    private final Person person = new Person("Jane", "Doe");
+
+    @Test
+    void standardAssertions() {
+        assertEquals(2, calculator.add(1, 1));
+        assertEquals(4, calculator.multiply(2, 2),
+                "The optional failure message is now the last parameter");
+        assertTrue('a' < 'b', () -> "Assertion messages can be lazily evaluated -- "
+                + "to avoid constructing complex messages unnecessarily.");
+    }
+
+    @Test
+    void groupedAssertions() {
+        // In a grouped assertion all assertions are executed, and all
+        // failures will be reported together.
+        assertAll("person",
+            () -> assertEquals("Jane", person.getFirstName()),
+            () -> assertEquals("Doe", person.getLastName())
+        );
+    }
+
+    @Test
+    void dependentAssertions() {
+        // Within a code block, if an assertion fails the
+        // subsequent code in the same block will be skipped.
+        assertAll("properties",
+            () -> {
+                String firstName = person.getFirstName();
+                assertNotNull(firstName);
+
+                // Executed only if the previous assertion is valid.
+                assertAll("first name",
+                    () -> assertTrue(firstName.startsWith("J")),
+                    () -> assertTrue(firstName.endsWith("e"))
+                );
+            },
+            () -> {
+                // Grouped assertion, so processed independently
+                // of results of first name assertions.
+                String lastName = person.getLastName();
+                assertNotNull(lastName);
+
+                // Executed only if the previous assertion is valid.
+                assertAll("last name",
+                    () -> assertTrue(lastName.startsWith("D")),
+                    () -> assertTrue(lastName.endsWith("e"))
+                );
+            }
+        );
+    }
+
+    @Test
+    void exceptionTesting() {
+        Exception exception = assertThrows(ArithmeticException.class, () ->
+            calculator.divide(1, 0));
+        assertEquals("/ by zero", exception.getMessage());
+    }
+
+    @Test
+    void timeoutNotExceeded() {
+        // The following assertion succeeds.
+        assertTimeout(ofMinutes(2), () -> {
+            // Perform task that takes less than 2 minutes.
+        });
+    }
+
+    @Test
+    void timeoutNotExceededWithResult() {
+        // The following assertion succeeds, and returns the supplied object.
+        String actualResult = assertTimeout(ofMinutes(2), () -> {
+            return "a result";
+        });
+        assertEquals("a result", actualResult);
+    }
+
+    @Test
+    void timeoutNotExceededWithMethod() {
+        // The following assertion invokes a method reference and returns an object.
+        String actualGreeting = assertTimeout(ofMinutes(2), AssertionsDemo::greeting);
+        assertEquals("Hello, World!", actualGreeting);
+    }
+
+    @Test
+    void timeoutExceeded() {
+        // The following assertion fails with an error message similar to:
+        // execution exceeded timeout of 10 ms by 91 ms
+        assertTimeout(ofMillis(10), () -> {
+            // Simulate task that takes more than 10 ms.
+            Thread.sleep(100);
+        });
+    }
+
+    @Test
+    void timeoutExceededWithPreemptiveTermination() {
+        // The following assertion fails with an error message similar to:
+        // execution timed out after 10 ms
+        assertTimeoutPreemptively(ofMillis(10), () -> {
+            // Simulate task that takes more than 10 ms.
+            new CountDownLatch(1).await();
+        });
+    }
+
+    private static String greeting() {
+        return "Hello, World!";
+    }
+
+}
+```
+
+참고 : [https://junit.org/junit5/docs/current/user-guide/#overview-what-is-junit-5](https://junit.org/junit5/docs/current/user-guide/#overview-what-is-junit-5)
+
+

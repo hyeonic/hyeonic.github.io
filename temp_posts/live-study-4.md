@@ -398,6 +398,10 @@ class AssertionsDemo {
 }
 ```
 
+&nbsp; 좀 더 공부한 뒤 새로운 프로젝트에 적용하고 따로 게시글을 작성할 예정이다.
+
 참고 : [https://junit.org/junit5/docs/current/user-guide/#overview-what-is-junit-5](https://junit.org/junit5/docs/current/user-guide/#overview-what-is-junit-5)
+
+
 
 

@@ -1,0 +1,222 @@
+### Spring Security
+
+Spring 기반의 애플리케이션의 보안(인증과 권한, 인가 등)을 담당하는 스프링 하위 프레임워크. Spring Security는 '인증'과 '권한'에 대한 부분을 Filter의 흐름에 따라 처리한다. Filter이기 때문에 Dispatcher Servclet으로 가기 전에 적용 된다.
+
+이러한 Spring Security는 보안과 관련해서 체계적으로 많은 옵션을 제공해주기 때문에 개발자 입장에서 보안과 관련된 로직을 일일이 작성하지 않아도 된다는 장점이 있다.
+
+<!-- Spring Security Authentication Architecture -->
+
+### 인증(Authorization)과 인가(Authentication)
+
+* `인증 Authentication`: 해당 사용자가 본인이 맞는지를 확인하는 절차
+* `인가 Authorization`: 인증된 사용자가 요청한 자원에 접근 가능한지를 결정하는 절차
+
+Spring Security는 기본적으로 인증 절차를 걸친 후 인가 절차를 진행한다. 인증 절차를 거친 후 해당 리소스에 대한 접근 권한이 있는지 확인하는 인가 절차를 진행한다.
+
+Spring Security는 이러한 인증과 인가를 `Principal`, `Credential`을 사용하여 Credential 기반의 인증 방식을 사용한다.
+
+* `Principal`: 보호받는 Resource에 접근하는 대상
+* `Credential`: Resource에 접근하는 대상의 비밀번호
+
+### Spring Security 주요 모듈
+
+#### SecurityContextHolder
+
+보안 주체의 세부 정보를 포함하여 응용 프로그램의 현재 보안 컨텍스트에 대한 세부 정보가 저장된다. SecurityContext의 공유 전략은 3가지의 기본 공유 전략을 제공한다.
+
+* `SecurityContextHolder.MODE_THREADLOCAL`: ThreadLocalSecurityContextHolderStragegy 클래스를 구현체로 사용하며, ThreadLocal을 사용하여 SecurityContext를 공유한다. ThrealLocal은 같은 쓰레드 내에서 공유할 수 있는 자원을 의미한다. defualt 모드이다.
+
+* `SecurityContextHolder.MODE_INHERITABLETHREADLOCAL`: InheritableThreadLocalSecurityContextHolderStrategy 클래스를 구현체로 사용하며, inheritableThreadLocal을 사용하여 SecurityContext를 공유한다. 자식 쓰레드까지 공유할 수 있는 자원을 의미한다. 
+
+* `SecurityContextHolder.MODE_GLOBAL`: GlobalSecurityContextHolderStrategy 클래스를 구현체로 사용하며, static 선언하여 SecurityContext를 저장한다. 해당 JVM 내의 인스턴스들은 모두 공유할 수 있다.
+
+아래 코드는 적용 방법이다.
+
+```java
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throwss Exception {
+
+        // defualt는 MODE_THREADLOCAL
+        SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
+    }
+}
+```
+
+#### SecurityContext
+
+`Authentication`을 보관하는 역할을 한다. `SecurityContext`를 통해서 `Authentication 객체`를 꺼내올 수 있다.
+
+#### Authentication
+
+`Authenticaton`은 현재 접근하는 주체의 정보와 권한을 담는 인터페이스이다. `Authentication` 객체는 `SecurityContext에` 저장되며 `SecurityContext`를 통해 접근할 수 있다.
+
+```java
+public interface Authentication extends Principal, Serializable {
+
+	
+	// 현재 사용자의 권한 목록을 가져온다.
+    Collection<? extends GrantedAuthority> getAuthorities();
+
+	// credials를 가져온다.
+	Object getCredentials();
+
+	// 인증 요청에 대한 추사 세부 정보를 가져온다.
+	Object getDetails();
+
+	// 인증되는 주체의 id를 가져온다.
+	Object getPrincipal();
+
+	// 인증 여부를 가져온다.
+	boolean isAuthenticated();
+
+	// 인증 여부를 설정한다.
+	void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException;
+
+}
+```
+
+#### UsernamePasswordAuthenticationToken
+
+`UsernamePasswordAuthenticationToken`은 `Authentication`을 구현한 `AbstractAuthenticationToken`의 하위 클래스이다. User의 id가 `Principal`의 역할을 하고 Password가 `Credential`의 역할을 한다.
+
+```java
+public class UsernamePasswordAuthenticationToken extends AbstractAuthenticationToken {
+
+	private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
+
+	// id
+	private final Object principal;
+
+	// password
+	private Object credentials;
+
+	public UsernamePasswordAuthenticationToken(Object principal, Object credentials) {
+		super(null);
+		this.principal = principal;
+		this.credentials = credentials;
+		setAuthenticated(false);
+	}
+
+	public UsernamePasswordAuthenticationToken(Object principal, Object credentials,
+			Collection<? extends GrantedAuthority> authorities) {
+		super(authorities);
+		this.principal = principal;
+		this.credentials = credentials;
+		super.setAuthenticated(true); // must use super, as we override
+	}
+
+	@Override
+	public Object getCredentials() {
+		return this.credentials;
+	}
+
+	@Override
+	public Object getPrincipal() {
+		return this.principal;
+	}
+
+	@Override
+	public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
+		Assert.isTrue(!isAuthenticated,
+				"Cannot set this token to trusted - use constructor which takes a GrantedAuthority list instead");
+		super.setAuthenticated(false);
+	}
+
+	@Override
+	public void eraseCredentials() {
+		super.eraseCredentials();
+		this.credentials = null;
+	}
+
+}
+```
+
+#### AuthenticationProvider
+
+`AuthenticationProvider`에서는 실제 인증에 대한 부분을 처리한다. 인증 전의 `Authentication` 객체를 받아서 인증이 완료된 객체를 반환한다. 
+
+```java
+public interface AuthenticationProvider {
+
+	// 인증 전의 Authentication 객체를 받아 인증된 Authenticaiton 객체를 반환한다.
+	Authentication authenticate(Authentication authentication) throws AuthenticationException;
+
+	// Authentication 객체를 지원 하는지 여부를 반환한다.
+	boolean supports(Class<?> authentication);
+}
+```
+
+#### Authentication Manager
+
+`AuthenticationManager`를 통해 인증을 처리한다. 정확히는 AuthenticationManager에 등록된 `AuthenticationProvider`에 의해 처리된다. 인증이 성공하면 해당 객체를 생성하여 `SecurityContex`에 저장한다. 그리고 인증 상태를 유지하기 위해 세션에 보관(Spring Security는 기본적으로 세션을 기반하여 동작)하며, 인증이 실패하게 되면 `AuthenticaitonException`을 던진다.
+
+실제 인증 로직은 `AuthenticationManager`의 구현체인 `ProviderManager`에 들어있다.
+
+#### UserDetails
+
+인증에 성공하여 생성된 `UserDetails` 객체는 `Authentication` 객체를 구현한 `UsernamePasswordAuthenticationToken`을 생성하기 위해 사용된다.
+
+```java
+public interface UserDetails extends Serializable {
+
+	// 사용자에게 부여된 권한을 반환한다.
+	Collection<? extends GrantedAuthority> getAuthorities();
+
+	// 사용자를 인증하는데 사용된 암호를 반환한다.
+	String getPassword();
+
+	// 사용자를 인증하는데 사용된 사용자 이름을 반환한다.
+	String getUsername();
+
+	// 사용자의 계정이 만료되었는지 여부를 나타낸다.
+	boolean isAccountNonExpired();
+
+	// 사용자가 잠겨 있는지 또는 잠금 해제되어 있는지 나타낸다.
+	boolean isAccountNonLocked();
+
+	// 사용자의 자격 증명(암호)이 만료되었는지 여부를 나타낸다.
+	boolean isCredentialsNonExpired();
+
+	// 사용자가 활성화되어있는지 여부를 나타낸다.
+	boolean isEnabled();
+}
+```
+
+#### GrantedAuthority
+
+`GrantedAuthority`는 현재 사용자가 가지고 잇는 권한을 의미한다. `ROLE_*`의 형태로 사용한다. `GrantedAuthority`는 `UserDetailsService`에 의해 불러올 수 있고, 특정 자원에 대한 권한이 있는지 검사하여 접근 허용 여부를 결정한다.
+
+#### UserDetailsService
+
+`UserDetailsService` 인터페이스는 `UserDetails` 객체를 반환하는 `loadUserByUsername` 메소드를 가지고 있다. 보통 `UserRepository`를 주입받아 DB와 연결하여 처리한다.
+
+```java
+public interface UserDetailsService {
+
+	UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
+
+}
+```
+
+#### PasswordEncoder
+
+`AuthenticationManagerBuilder.userDetailsService().passowrdEncoder()`를 통해 패스워드 암호화에 사용될 PasswordEncoder 구현체를 지정할 수 있다.
+
+```java
+@Bean
+public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+}
+```
+
+---
+
+### References.
+
+[spring-security-docs-manual 5.5.1 API](https://docs.spring.io/spring-security/site/docs/current/api/index.html)
+
+[Spring Security(2) - SecurityContext](https://yoon0120.tistory.com/48)

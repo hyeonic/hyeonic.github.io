@@ -227,12 +227,12 @@ public class UserService {
     }
 
     public UserMainResponseDto findUserInfo() {
-        Long id = SecurityUtil.getCurrentUserId().orElseThrow(() ->
+        String email = SecurityUtil.getCurrentEmail().orElseThrow(() ->
                 new RuntimeException("Security Context에 인증 정보가 없습니다."));
 
-        return userRepository.findById(id)
+        return userRepository.findByEmail(email)
                 .map(user -> new UserMainResponseDto(user))
-                .orElseThrow(() -> new RuntimeException("존재하지 않는 user 입니다. id=" + id));
+                .orElseThrow(() -> new RuntimeException("존재하지 않는 user 입니다. email=" + email));
     }
 }
 ```
@@ -241,13 +241,13 @@ public class UserService {
 * `findById`: 전달받은 user id를 활용하여 조회한다. 조회되는 user가 없다면 예외를 던진다.
 * `findUserInfo`: 후에 작성할 `SecurityUtil.getCurrentUserId()`에서 `SecurityContext`안에 담긴 user id 정보를 가져온다. 해당 id를 기반으로 조회하여 반환한다. 여기서 `user id`는 위에서 작성한 `User Entity의 id`에 해당한다.
 
-**UserController.java**
+**UserApiController.java**
 
 ```java
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-public class UserController {
+public class UserApiController {
 
     private final UserService userService;
 
@@ -262,7 +262,7 @@ public class UserController {
         return ResponseEntity.ok(new CommonResponse<>(userService.findUserInfo()));
     }
 
-    @GetMapping("users/{userId}")
+    @GetMapping("/users/{userId}")
     @PreAuthorize("hasAnyRole('ADMIN')")
     public ResponseEntity<? extends BasicResponse> getUserInfo(@PathVariable Long userId) {
         return ResponseEntity.ok(new CommonResponse<>(userService.findById(userId)));
@@ -419,6 +419,7 @@ public class JwtFilter implements Filter {
         return null;
     }
 }
+
 ```
 
 `Filter` 인터페이스를 구현한 `JwtFilter`이다. 
@@ -571,24 +572,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class SecurityUtil {
 
-    // Security Context의 Authentication 객체를 이용하여 user id를 return 해주는 유틸성 메소드
-    public static Optional<Long> getCurrentUserId() {
-        // SecurityContext에 Authentication 객체가 저장되는 시점은 JwtFilter의 doFilter메소드가 실행될 때이다. SecurityContext에서 Authentication 객체를 get 한다.
+    public static Optional<String> getCurrentEmail() {
+        // Security Context에 Authentication 객체가 저장되는 시점은
+        // JwtFilter의 doFilter메소드에서 Request가 들어올 때 SecurityContext에 Authentication 객체를 저장해서 사용
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (authentication == null || authentication.getName() == null) {
+        if (authentication == null) {
+            log.debug("Security Context에 인증 정보가 없습니다.");
             return Optional.empty();
         }
 
-        long userId = Long.parseLong(authentication.getName());
-        return Optional.of(userId);
+        String username = null;
+        if (authentication.getPrincipal() instanceof UserDetails) {
+            UserDetails springSecurityUser = (UserDetails) authentication.getPrincipal();
+            username = springSecurityUser.getUsername();
+        } else if (authentication.getPrincipal() instanceof String) {
+            username = (String) authentication.getPrincipal();
+        }
+
+        return Optional.ofNullable(username);
     }
 }
 ```
 
 `SecurityContext`에 `Authentication` 객체가 저장되는 시점은 `JwtFilter`의 `doFilter`메소드가 실행될 때이다. `SecurityContext`에서 `Authentication` 객체를 get 한다.
 
-그렇게 얻은 `authentication` 객체가 정상적인 값이 들어 있다면 name에 저장된 `user id (위에서 직접 만든 User Entity 의 id)`를 꺼내와 반환한다. 
+그렇게 얻은 `authentication` 객체가 정상적인 값이 들어 있다면 username을 꺼내와 반환한다. 
 
 ---
 
@@ -681,7 +690,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(user.getRole().toString());
 
         return new org.springframework.security.core.userdetails.User(
-                String.valueOf(user.getId()), // username에 user id를 기입
+                user.getEmail(),
                 user.getPassword(),
                 Collections.singleton(grantedAuthority)
         );
@@ -689,9 +698,4 @@ public class CustomUserDetailsService implements UserDetailsService {
 }
 ```
 
-`UserDetailsService` 인터페이스를 구현한 클래스이다. 위에서 언급한 `authticate`메소드가 실행될 때 `loadUserByUsername`을 통하여 DB정보를 가져온 후 사용자의 PW가 일치하는지 검증한다. 그렇기 때문에 `org.springframework.security.core.userdetails.User`를 생성하여 반환할 때 `usernmae` 대신 `entity의 id` 값을 활용하였다.
-
-
-
-
-
+`UserDetailsService` 인터페이스를 구현한 클래스이다. 위에서 언급한 `authticate`메소드가 실행될 때 `loadUserByUsername`을 통하여 DB정보를 가져온 후 사용자의 PW가 일치하는지 검증한다. `UserDetails` 객체를 반환하기 위해 `createUserDetails` 메소드에서 `User entity`의 정보를 기반으로 `org.springframework.security.core.userdetails.User`를 `생성`하여 반환한다.

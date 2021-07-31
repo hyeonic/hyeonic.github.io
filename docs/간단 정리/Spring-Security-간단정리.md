@@ -220,3 +220,7 @@ public PasswordEncoder passwordEncoder() {
 [spring-security-docs-manual 5.5.1 API](https://docs.spring.io/spring-security/site/docs/current/api/index.html)
 
 [Spring Security(2) - SecurityContext](https://yoon0120.tistory.com/48)
+
+### 추가적으로 살펴보면 좋은 블로그
+
+[Spring boot - Spring Security(스프링 시큐리티) 란? 완전 해결!](https://coding-start.tistory.com/153?category=869723)

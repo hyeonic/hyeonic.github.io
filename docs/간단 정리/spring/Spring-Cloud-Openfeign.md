@@ -8,7 +8,7 @@
 
 ## Spring Cloud OpenFeign 이란?
 
-Spring Cloud OpenFeign은 Netflix에서 개발된 Open Feign과 Spring Cloud가 통합한 버전이다.
+Spring Cloud OpenFeign은 Netflix에서 개발된 Open Feign과 Spring Cloud가 통합한 버전이다. Spring Cloud는 Spring MVC에서 사용되는 `HttpMessageConverters`를 사용하여 동일하게 작성할 수 있도록 지원한다.
 
 ## 의존성 추가
 
@@ -63,21 +63,32 @@ public class SpringOpenfeignApplication {
 
 ## @FeignClient
 
+다음과 같이 `@FeignClient`애노테이션과 인터페이스만 정의하면 된다. Feign이 자동으로 구현 클래스를 생성한 후 스프링 애플리케이션 컨텍스트에 빈으로 노출시킨다.
+
 ```java
 @FeignClient(name = "user", url = "http://localhost:8080")
-public interface UserClient {
+public interface UserApiClient {
 
     @GetMapping("/api/v1/users")
     List<User> getUsers();
 
+    @GetMapping("/api/v1/users/{userId}")
+    User getUser(@PathVariable Long userId);
+
     @PostMapping("/api/v1/users")
-    User postUser(@RequestBody UserSaveRequestDto requestDto);
+    User save(@RequestBody UserSaveRequestDto requestDto);
+
+    @PutMapping("/api/v1/users/{userId}")
+    User update(@PathVariable Long userId, @RequestBody UserSaveRequestDto updateDto);
+
+    @DeleteMapping("/api/v1/users/{userId}")
+    void delete(@PathVariable Long userId);
 }
 ```
 
 ## 주의할 점
 
-* Spring MVC의 경우 `@PathVariable`, `@QueryParam` 등 추가적인 value를 넣지 않아도 field의 이름이 default로 설정된다. 하지만 feign에서는 value를 필수적으로 세팅해줘야 제대로 mapping 된다.
+* Spring MVC의 경우 `@PathVariable`, `@QueryParam` 등 추가적인 value를 넣지 않아도 field의 이름이 default로 설정된다. 하지만 feign에서는 value를 필수적으로 세팅해줘야 제대로 mapping 된다. => 현재는 생략하여도 잘 작동한다. 너무 생략하게 되면 직관성이 떨어질 여지가 있다. 적절히 표기하는 것이 바람직하다고 생각된다.
 
 * Feign client method parameter로 아무것도 설정하지 않으면 `@RequestBody`로 생각하여 처리한다. 이때 이러한 parameter가 두 개 이상 이면  `Method has too many Body parameters` 에러가 발생한다.
 
@@ -88,4 +99,5 @@ public interface UserClient {
 ## References.
 
 [우아한 feign 적용기](https://techblog.woowahan.com/2630/)
+
 [Spring Cloud OpenFeign](https://cloud.spring.io/spring-cloud-static/spring-cloud-openfeign/2.1.0.RELEASE/single/spring-cloud-openfeign.html)

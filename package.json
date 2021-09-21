@@ -20,5 +20,8 @@
   "homepage": "https://github.com/hyeonic/hyeonic.github.io#readme",
   "devDependencies": {
     "vuepress": "^1.8.2"
+  },
+  "dependencies": {
+    "vuepress-bar": "^0.4.2"
   }
 }

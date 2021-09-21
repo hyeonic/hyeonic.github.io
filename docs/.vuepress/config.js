@@ -32,5 +32,4 @@ module.exports = {
         sidebar,
         lastUpdated: 'last updated',
     },
-    base: '/blog/',
 };

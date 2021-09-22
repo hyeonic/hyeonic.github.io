@@ -36,6 +36,9 @@ module.exports = {
     plugins: [
       ["@vuepress/back-to-top"],
       ["@vuepress/last-updated"],
-      ["vuepress-plugin-code-copy"]
+      ["vuepress-plugin-code-copy"],
+      ['@vuepress/search', {
+        searchMaxSuggestions: 10
+      }]
     ]
 };

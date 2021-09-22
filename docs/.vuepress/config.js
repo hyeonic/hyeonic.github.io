@@ -6,6 +6,7 @@ module.exports = {
     description: 'hyeonic 기술 블로그',
     themeConfig: {
         nav: [
+            {text: 'tag', link: '/tag/'},
             {text: 'java', link: '/java/'},
             {text: 'spring', link: '/spring/'},
             {text: 'til', link: '/til/'},

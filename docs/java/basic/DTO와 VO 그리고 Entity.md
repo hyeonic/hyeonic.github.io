@@ -1,3 +1,7 @@
+---
+tags: ['dto', 'vo', 'entity']
+---
+
 # DTO와 VO 그리고 Entity
 
 ## DTO
@@ -115,3 +119,5 @@ public class User {
 ## References.
 
 [[10분 테코톡] 🎼라흐의 DTO vs VO](https://www.youtube.com/watch?v=J_Dr6R0Ov8E&t=258s)
+
+<TagLinks />

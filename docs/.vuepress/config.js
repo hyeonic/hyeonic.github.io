@@ -33,4 +33,9 @@ module.exports = {
         sidebar,
         lastUpdated: 'last updated',
     },
+    plugins: [
+      ["@vuepress/back-to-top"],
+      ["@vuepress/last-updated"],
+      ["vuepress-plugin-code-copy"]
+    ]
 };

@@ -2,11 +2,11 @@ const getConfig = require("vuepress-bar");
 const { sidebar } = getConfig();
 
 module.exports = {
-    title: '개발자 hyeonic',
+    title: '배움을 기록',
     description: 'hyeonic 기술 블로그',
     themeConfig: {
         nav: [
-            {text: 'tag', link: '/tag/'},
+            {text: 'tag', link: '/해시태그/'},
             {text: 'java', link: '/java/'},
             {text: 'spring', link: '/spring/'},
             {text: 'til', link: '/til/'},

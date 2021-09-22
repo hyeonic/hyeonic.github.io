@@ -132,5 +132,4 @@ Only certain, stable sort algorithms will treat negative values and 0 the same. 
 [Interface Comparator](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html)<br>
 [why we need to return 0 when Comparator.compare become equal](https://stackoverflow.com/questions/58267950/why-we-need-to-return-0-when-comparator-compare-become-equal)
 
-
 <TagLinks />

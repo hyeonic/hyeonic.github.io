@@ -1,4 +1,4 @@
-# [Hyeonic's TIL](https://hyeonic.github.io/)
+# Guide
 
 __Vuepress로 제작한 하루에 배운 것들을 기록하는 TIL__ 
 

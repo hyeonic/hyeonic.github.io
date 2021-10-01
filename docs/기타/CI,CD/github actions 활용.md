@@ -11,6 +11,8 @@ tags: ['github actions']
 
 기본적인 git, github 지식을 가지고 있다고 가정하고 진행한다.
 
+작성한 소스 코드와 작업 내역은 [github-actions-docker](https://github.com/hyeonic/github-actions-docker) 참고하세요.
+
 ## Github Actions란?
 
 이전 게시글 참고 [Github Actions란?](https://hyeonic.github.io/%EA%B8%B0%ED%83%80/CI,CD/github%20actions.html)

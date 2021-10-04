@@ -266,10 +266,6 @@ tags: ['시스템 분석 및 설계']
     <img src=https://user-images.githubusercontent.com/59357153/135752945-12f224b7-11c4-4250-86d2-7291d60b3026.png>
 </p>
 
-<p align=center>
-    <img src=https://user-images.githubusercontent.com/59357153/135752945-12f224b7-11c4-4250-86d2-7291d60b3026.png>
-</p>
-
 ## Project and Process Management 프로젝트 및 프로세스 관리
 
 프로젝트 관리 – 할당된 시간과 예산 내에서 허용 가능한 시스템을 개발하기 위해 프로젝트를 정의, 계획, 지시, 모니터링 및 제어하는 활동.

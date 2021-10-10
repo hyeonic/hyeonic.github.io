@@ -5,8 +5,8 @@ description: 배움을 기록하는 기술 블로그입니다.
 actionText: Get Started →
 actionLink: /about/
 features:
-  - title: TIL
-    details: 매일매일 공부한 것을 간단히 정리
+  - title: Problem solving
+    details: baekjoon, programmers 등 문제 해결 정리
   - title: Java
     details: java 기본 개념 및 이슈 정리
   - title: Spring

@@ -1,7 +1,7 @@
 ---
 home: true
 heroText: 배움을 기록
-description: 배움을 기록하는 기술 블로그입니다.
+description: 배움을 기록하는 블로그입니다.
 actionText: Get Started →
 actionLink: /about/
 features:

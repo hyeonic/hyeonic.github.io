@@ -1,6 +1,6 @@
 ---
 title: Chapter05 스트림 활용
-tags: ['Modern Java in Action', 'TODO']
+tags: ['Modern Java in Action']
 ---
 
 # Chapter05 스트림 활용
@@ -692,9 +692,95 @@ System.out.println(Arrays.stream(numbers).sum());
 
 ### 5.8.4 파일로 스트림 만들기
 
+파일을 처리하는 등의 I/O 연산에 사용하는 자바의 `NIO API`도 스트림 `API`를 활용할 수 있도록 업데이트 되었다. `java.nio.file.Files`의 많은 정적 메서드가 스트림을 반환한다.
+
 ```java
-// TODO
+long uniqueWords = 0;
+// 스트림은 자동을 자동으로 해제할 수 있는 AutoCloseable 이므로 try-finally가 필요없다.
+try (Stream<String> lines = Files.lines(Paths.get("data.txt"), Charset.defaultCharset())) {
+    // 고유 단어 수 계산
+    uniqueWords = lines.flatMap(line -> Arrays.stream(line.split(" ")))
+            .distinct() // 중복 제거
+            .count(); // 단어 스트림 생성
+            
+} catch (IOException e) {
+    // 파일을 열다가 예외가 발생하면 처리한다.
+}
 ```
+
+`Stream 인터페이스`는 `AutoCloseable 인터페이스`를 구현하기 때문에 try 블록 내의 자원은 자동으로 관리된다.
+
+### 5.8.5 함수로 무한 스트림 만들기
+
+스트림 API는 함수에서 스트림을 만들 수 있는 두 정적 메서드 `Stream.iterate`와 `Stream.generate`를 제공한다. 두 연산을 이용해서 `무한 스트림`, 즉 크기가 고정되지 않은 스트림을 만들 수 있다. iterate와 generate에서 만든 스트림은 요청할 때마다 주어진 함수를 이용해서 값을 만든다. 무제한으로 값을 계산할 수 있다. 하지만 무한한 값을 출력하지 않도록 limit(n) 함수를 함께 연결해서 사용한다.
+
+#### iterate 메서드
+
+```java
+Stream.iterate(0, n -> n + 2)
+        .limit(10)
+        .forEach(System.out::println);
+```
+
+위 `iterate` 메서드는 `짝수 스트림`을 생성한다. 첫 요소는 0으로 시작한다. 기본적으로 iterate는 기존 결과에 의존해서 순차적으로 연산을 수행한다. 이러한 스트림을 `언바운드 스트림`이라고 표현한다. 이러한 특징이 컬렉션과 가장 큰 차이점이다.
+
+일반적으로 연속된 일련의 값을 만들 때는 `iterate`를 사용한다.
+
+자바 9의 iterate 메서드는 프레디케이트를 지원한다. 두 번째 인수로 프레디케이트를 받아 언제까지 작업을 수행할 것인지 기준으로 삼는다.
+```java
+IntStream.iterate(0, n -> n < 100, n -> n + 4)
+        .forEach(System.out::println);
+```
+
+filter를 사용하면 안된다. 실제 아래 코드는 종료되지 않는다. filter 메서드는 언제 이 작업을 중단해야 하는지 알 수 없기 때문이다.
+```java
+IntStream.iterate(0, n -> n + 4)
+        .filter(n -> n < 100)
+        .forEach(System.out::println);
+```
+
+이럴 땐 스트림 쇼트서킷을 지원하는 takeWhile을 사용해야 한다.
+```java
+IntStream.iterate(0, n -> n + 4)
+        .takeWhile(n -> n < 100)
+        .forEach(System.out::println);
+```
+
+IDE에서는 `iterate에 인수로 전달하는 방법`을 가장 우선적으로 추천한다!
+
+#### generate 메서드
+
+`generate` 메서드를 활용해서 무한 스트림을 만들 수 있다. 하지만 `iterate`와 달리 `generate`는 생산된 각 값을 연속적으로 계산하지 않는다. 
+
+아래 코드는 0에서 1사이에서 임의의 더블 숫자 다섯 개를 만든다.
+```java
+Stream.generate(Math::random)
+        .limit(10)
+        .forEach(System.out::println);
+```
+
+generate 메서드는 우리가 사용한 발행자supplier(메서드 참조 Math.random)는 보통 상태가 없는 메서드, 나중에 계산에 사용할 어떤 값도 저장해두지 않는다. 하지만 발행자에 꼭 상태가 없어야 하는 것은 아니다. 발행자가 상태를 저장한 다음에 스트림의 다음 값을 만들 때 상태를 고칠 수도 있다.
+
+IntStream은 박싱 연산 문제를 피할 수 있다. IntStream의 generate 메서드는 Supplier 대신에 IntSupplier를 인수로 받는다.
+
+```java
+IntStream.generate(() -> 1)
+        .limit(5)
+        .forEach(System.out::println);
+```
+
+## 5.9 마치며
+ * 스트림 API를 이용하면 복잡한 데이터 처리 질의를 표현할 수 있다. 
+ * filter, distinct, takeWhile(자바 9), dropWhile(자바 9), skip, limit 메서드로 스트림을 필터링하거나 자를 수 있다.
+ * 소스가 정렬되어 있다는 사실을 알고 있을 때 takeWhile, dropWhile 메서드를 효과적으로 사용할 수 있다.
+ * map, flatMap 메서드로 스트림의 요소를 추출하거나 변환할 수 있다.
+ * findFirst, findAny 메서드로 스트림의 요소를 검색할 수 있다. allMatch, noneMatch, anyMatch 메서드를 이용해서 주어진 프레디케이트와 일치하는 요소를 스트림에서 검색할 수 있다.
+ * 이들 메서드는 쇼트서킷, 즉 결과를 찾는 즉시 반환하며, 전체 스트림을 처리하지 않는다.
+ * reduce 메서드로 스트림의 모든 요소를 반복 조합하며 값을 도출할 수 있다. 예를 들어 reduce로 스트림의 최댓값이나 모든 요소의 합계를 계산할 수 있다.
+ * filter, map등은 상태를 저장하지 않는 상태 없는 연산이다. reduce 같은 연산은 값을 계산하는 데 필요한 상태를 저장한다. sorted, distinct 등의 메서드는 새로운 스트림을 반환하기에 앞서 스트림의 모든 요소를 버퍼에 저장해야 한다. 이런 메서드를 상태 있는 연산이라고 부른다.
+ * IntStream, DoubleStream, LongStream은 기본형 특화 스트림이다. 이들 연산은 각각의 기본형에 맞게 특화되어 있다.
+ * 컬렉션뿐 아니라 값, 배열, 파일 iterate와 generate 같은 메서드로 스트림을 만들 수 있다.
+ * 무한한 개수의 요소를 가진 스트림은 무한 스트림이라 한다.
 
 ## References
 

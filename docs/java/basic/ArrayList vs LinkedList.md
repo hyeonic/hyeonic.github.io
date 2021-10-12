@@ -230,16 +230,107 @@ ArrayList는 내부에 배열을 기반으로 편리한 기능들을 추가하�
     * 요소들이 연속하여 저장되어 있다. 만약 중간에 데이터가 추가된다면 추가된 데이터 이후로 모든 요소들을 한칸씩 미뤄야 한다. 결국 대부분의 요소를 옮기는 추가적인 시간이 소요된다.
 
  * `remove(int index)`: 특정 인덱스를 삭제하는 경우
-    * 중간에 위치한 요소를 삭제하는 경우 빈 공간을 매꾸기 위한 과정이 필요하다. 결국 대부분의 요소를 옮기는 추가적인 시간이 소요된다.
+    * 중간에 위치한 요소를 삭제하는 경우 빈 공간을 매꾸기 위한 과정이 필요하다. 결국 마지막 요소의 삭제를 제외하고는 요소를 옮기는 추가적인 시간이 소요된다.
 
  * `get(int index)`: 특정 인덱스를 검색하는 경우
-    * 배열의 가장 큰 장점이다. 특정 인덱스에 빠르게 접근하여 값을 가져올 수 있다.
+    * 배열의 가장 큰 장점이다. 특정 인덱스에 빠르게 접근하여 값을 가져올 수 있다. 
 
 ### 간단 요약
 
 ::: tip
-탐색에는 매우 유리하다. 중간 인덱스에 데이터의 빈번한 추가 및 삭제는 비효율적이다.
+탐색에는 매우 유리하다. 순차적인 추가 삭제는 빠르게 이루어진다. 끝 요소 삭제를 제외하면 요소의 이동을 위한 추가적인 연산이 요구된다.
 :::
+
+## LinkedList
+
+`LinkedList`는 내부적으로 `양방향 연결 리스트`로 구성되어 있다. 원소를 따라 `순방향` 혹은 `역방향`으로 순회가 가능하다. `LinkedList`는 크기 변경이 불가능하고 중간 인덱스에서 데이터를 삭제 및 추가에 불리한 `배열의 단점`을 `보완`할 수 있는 자료 구조이다.
+
+실제 내부 구현을 살펴보면 `private static class`로 선언한 `Node` 클래스를 사용하는 것을 확인할 수 있었다.
+
+```java
+public class LinkedList<E>
+    extends AbstractSequentialList<E>
+    implements List<E>, Deque<E>, Cloneable, java.io.Serializable
+{
+    ...
+    private static class Node<E> {
+        E item;
+        Node<E> next;
+        Node<E> prev;
+
+        Node(Node<E> prev, E element, Node<E> next) {
+            this.item = element;
+            this.next = next;
+            this.prev = prev;
+        }
+    }
+    ...
+}
+```
+
+### LinkedList의 생성자
+
+LinkedList는 총 2개의 생성자를 가지고 있다.
+```java
+public class LinkedList<E>
+    extends AbstractSequentialList<E>
+    implements List<E>, Deque<E>, Cloneable, java.io.Serializable
+{
+    ...
+    public LinkedList() {
+    }
+    
+    public LinkedList(Collection<? extends E> c) {
+        this();
+        addAll(c);
+    }
+    ...
+}
+```
+
+ * `LinkedList()`: 기본 생성자이다.
+ * `LinkedList(Collection<? extends E> c)`: Collection 타입을 매개변수로 받는 생성자이다. 
+
+` ArrayList`와 가장 큰 `차이점`은 초기의 크기를 미리 생성하기 위한 생성자가 없다는 것이다. `LinkedList`는 특성에 맞게 초기의 크기를 미리 지정하지 않아도 된다.
+
+### LinkedList 특징
+
+LinkedList는 양방향 연결 리스트이기 때문에 양쪽에 요소를 추가하거나 삭제할 수 있는 메서드가 마련되어 있다.
+ 
+ * `add(E e)`: 단순의 요소를 추가하는 경우
+    * LinkedList는 add 메서드 사용 시 맨 뒤에 요소를 추가한다. 그 밖에도 요소 추가에 다양한 메소드 `addFisrt`, `push`, `offer` 등이 제공되지만 반환 타입이 다르다. 가장 뒤에 요소를 추가하는 것이기 때문에 역방향 탐색이 가능한 LinkedList는 빠르게 요소 처리가 가능하다.
+
+* `add(int index, E element)`: 특정 인덱스에 요소를 추가하는 경우
+    * 순차적으로 탐색을 진행하는 시간을 제외하고 탐색에 성공하면 양뱡향으로 연결된 리스트의 특성의 장점을 살려 빠르게 요소 추가가 가능하다. ArrayList처럼 요소를 전부 이동할 필요가 없다.
+    * 리스트의 시작과 끝에 추가할 경우 추가적인 탐색을 거치지 않기 때문에 시간 복잡도 `O(1)`로 매우 빠르게 처리가 가능하다.
+
+* `remove(int index)`: 특정 인덱스를 삭제하는 경우
+    * 특정 인덱스에 요소를 추가하는 것과 동일하게 단순히 삭제하고 남은 요소끼리 링크를 다시 연결하면 되기 때문에 빠르게 요소 삭제가 가능하다.
+
+* `get(int index)`: 특정 인덱스를 검색하는 경우
+    * Head부터 해당 원소 까지 검색을 진행한다. 최악의 경우 시간 복잡도는 `O(N)`이 될 수 있다.
+ 
+### 간단 요약
+
+::: tip
+읽기 속도는 ArrayList에 비하여 느리다. 데이터가 많을 수록 읽기 속도는 더욱 느려진다. 시작 요소와 끝 요소의 추가 및 삭제는 빠르게 적용이 가능하다. 중간 요소들의 경우 추가 및 삭제 자체는 빠르지만 해당 요소 탐색을 위한 시간이 소요된다. 추가적으로 배열에 비하여 양방향 연결을 유지하기 위한 메모리를 추가적으로 소모한다.
+:::
+
+## 시간 복잡도 비교
+
+| |ArrayList|LinkedList|
+|---|---|---|
+|add(시작)|O(N)|O(1)|
+|add(중간)|O(N)|O(N)|
+|add(끝)|O(1)|O(1)|
+|remove(시작)|O(N)|O(1)|
+|remove(중간)|O(N)|O(N)|
+|remove(끝)|O(N)|O(1)|
+|get()|O(1)|O(N)|
+
+일반적인 `탐색`을 위주로 사용한다면 `ArrayList`가 더 좋다. `LinkedList`의 경우 시작 혹은 끝에 잦은 추가 및 삭제는 빠르게 처리가 가능하다.
+
+`ArrayList`는 연속된 메모리에 저장된다. `LinkedList`는 링크 연결을 위한 추가적인 메모리가 낭비되고 노드가 연속된 메모리에 저장되는 것을 보장하지 않는다.
 
 ## References
 

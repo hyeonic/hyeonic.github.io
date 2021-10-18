@@ -3,7 +3,7 @@ title: lec02 정보 시스템 개발
 tags: ['시스템 분석 및 설계']
 ---
 
-# 정보 시스템 개발
+# Information Systems Development 정보 시스템 개발
 
 ## Objectives 목표
 

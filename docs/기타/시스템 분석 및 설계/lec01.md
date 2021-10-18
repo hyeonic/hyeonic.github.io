@@ -3,9 +3,9 @@ title: lec01 시스템 분석 및 설계 방법의 맥락
 tags: ['시스템 분석 및 설계']
 ---
 
-# 시스템 분석 및 설계 방법의 맥락
+# The Context of Systems Analysis and Design Methods 시스템 분석 및 설계 방법의 맥락
 
-## 목적
+## Objectives 목적
 
  * 정보 시스템을 정의하고 7가지 유형의 정보 시스템 애플리케이션의 이름을 지정한다.
  * 정보 시스템을 사용하거나 개발하는 다양한 유형의 이해 관계자를 식별하고 각각의 예를 제시한다.
@@ -15,7 +15,7 @@ tags: ['시스템 분석 및 설계']
  * 정보 시스템 개발에 영향을 미치는 현재의 기술 동인을 설명한다.
  * 정보 시스템 개발을 위한 간단한 프로세스를 간략하게 설명한다.
 
-## 시스템 분석과 설계를 위한 프레임워크
+## A Framework for Systems Analysis and Design 시스템 분석과 설계를 위한 프레임워크
 
 시스템은 원하는 결과를 얻기 위해 함께 작동하는 상호 관련 구성요소 그룹이다.
 
@@ -23,7 +23,7 @@ tags: ['시스템 분석 및 설계']
 
 정보기술은 컴퓨터 기술(하드웨어 및 소프트웨어)과 통신 기술(데이터, 이미지 및 음성 네트워크)을 결합한 현대 용어이다.
 
-## 정보 시스템(information system)의 유형
+## Types of Information Systems 정보 시스템의 유형
 
  * `트랜잭션 처리 시스템(TPS, transaction processing system)`은 비즈니스 트랜잭션에 대한 데이터를 캡처하고 처리하는 정보 시스템이다.
 
@@ -37,7 +37,7 @@ tags: ['시스템 분석 및 설계']
 
  * `사무자동화 시스템(office automation system)`은 직원들 간의 업무 흐름을 개선하는 광범위한 업무 활동을 지원하는 정보 시스템이다.
 
-## 이해 관계자(Stakeholders): 시스템 게임의 플레이어
+## Stakeholders: Players in the Systems Game 이해 관계자: 시스템 게임의 플레이어
 
 이해관계자는 기존 정보시스템 또는 제안된 정보시스템에 이해관계가 있는 모든 사람을 말한다.
 
@@ -50,12 +50,12 @@ tags: ['시스템 분석 및 설계']
 4. 시스템 개발자 System builder
 5. 시스템 분석가 및 프로젝트 관리자 System analyst and project manager
 
-### System Owners
+### System Owners 시스템 소유자
 
  * 정보 시스템의 스폰서이자 경영자
  * 보통 그 프로젝트에 자금을 대는 책임이 있다.
 
-### System Users
+### System Users 시스템 사용자
 
  * 정기적으로 정보 시스템을 이용하거나 영향을 받는 "고객"
  * 데이터와 정보를 캡처, 검증, 입력, 응답, 저장 및 교환할 수 있다.
@@ -77,7 +77,7 @@ tags: ['시스템 분석 및 설계']
  * remote 사용자
  * mobile 사용자
 
-### System designers and System Builders
+### System designers and System Builders 시스템 디자이너와 시스템 개발자
 
 #### System designer
 
@@ -89,7 +89,7 @@ tags: ['시스템 분석 및 설계']
 
  * 시스템 설계자에 의해 생성된 설계 명세서에 기초하여 정보 시스템과 구성요소를 구성하는 기술 전문가
 
-### System Analysts
+### System Analysts 시스템 분석가
 
  * 조직의 문제와 필요성을 연구한다.
  * 인적, 데이터, 프로세스 및 정보 기술이 비즈니스를 위해 가장 효과적으로 개선할 수 있는 방법을 결정한다.
@@ -101,14 +101,14 @@ tags: ['시스템 분석 및 설계']
     <img src=https://user-images.githubusercontent.com/59357153/135751403-e8a5a897-8a9f-42f0-b57d-e2d5215ccd52.png>
 </p>
 
-## Other Stakeholders
+## Other Stakeholders 다른 이해 관계자
 
  * External Service Provider (ESP)
     * 다른 기업에 전문 지식과 경험을 판매하는 시스템 분석가, 시스템 설계자 또는 시스템 구축자
  * Project Manager
     * 프로젝트의 계획, 감시 및 관리 책임을 인정하는 경험 많은 전문가
 
-## 오늘날의 정보 시스템을 위한 비즈니스 동력
+## Business Drivers for Today's Information Systems 오늘날의 정보 시스템을 위한 비즈니스 동력
 
 1. 경제의 세계화 Globalization of the Economy
 2. 전자상거래 및 기업 Electronic Commerce and Business
@@ -118,7 +118,7 @@ tags: ['시스템 분석 및 설계']
 6. 지속적인 품질 개선 및 총체적 품질관리 Continuous Improvement and Total Quality Management
 7. 비즈니스 프로세스 재설계 Business Process Redesign
 
-### 경제의 세계화
+### Globalization of the Economy 경제의 세계화
 
 1. 글로벌 경제를 가져온다
  * 국제시장 신·확대
@@ -178,15 +178,15 @@ tags: ['시스템 분석 및 설계']
 
 ### Continuous Improvement and Total Quality Management 지속적인 품질 개선 및 총체적 품질 관리
 
-1. 지속적인 프로세스 개선(CPI)
+1. 지속적인 프로세스 개선(CPI, Continuous process improvement)
  * 비즈니스 프로세스에 대한 지속적인 모니터링으로 비용 절감 및 부가가치 개선 효과는 작지만 측정 가능한 수준이다.
 
-2. 총품질관리(TQM)
+2. 총품질관리(TQM, Total quality management)
  * 비즈니스 내 품질 개선 및 관리를 촉진하기 위한 포괄적인 접근 방식.
 
 ### Business Process Redesign 비즈니스 프로세스 재설계
 
-1. 비즈니스 프로세스 재설계(BPR)
+1. 비즈니스 프로세스 재설계(BPR, Business process redesign)
  * 비용 절감 및/또는 비즈니스 부가가치 개선을 위한 기본 비즈니스 프로세스의 연구, 분석 및 재설계.
 
 ## Technology Drivers for Today's Information Systems 오늘날의 정보 시스템을 위한 동력
@@ -197,7 +197,7 @@ tags: ['시스템 분석 및 설계']
 4. 협업 기술 Collaborative Technologies
 5. 엔터프라이즈 애플리케이션 Enterprise Applications
 
-## Networks and the Internet
+## Networks and the Internet 네트워크와 인터넷
 
 1. 네트워크에는 메인프레임 시분할 시스템, 네트워크 서버 및 다양한 데스크톱, 랩톱 및 핸드헬드 클라이언트 컴퓨터가 포함된다.
 
@@ -239,7 +239,7 @@ tags: ['시스템 분석 및 설계']
  * 인스턴트 메시징
  * 그룹웨어
 
-### Enterprise Application
+### Enterprise Application 기업형 애플리케이션
 
 1. 사실상 모든 조직에 핵심 엔터프라이즈 애플리케이션 집합 필요
  * 재무관리, 인적자원, 영업 등
@@ -249,7 +249,7 @@ tags: ['시스템 분석 및 설계']
  * 전사적자원계획 Enterprise Resource Planning (ERP)
  * 시스템 통합 Systems Integration
 
-## System Development Process
+## System Development Process 시스템 개발 프로세스
 
 일련의 활동, 방법, 모범 사례, 결과물 및 이해 관계자들이 정보 시스템 및 소프트웨어를 개발하고 유지하기 위해 사용하는 자동화 도구.
 

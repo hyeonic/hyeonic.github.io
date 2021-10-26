@@ -99,7 +99,7 @@ spring:
 
 logging.level:
   org.hibernate.SQL: debug
-  com.skhuedin.skhuedin: debug≠
+  com.skhuedin.skhuedin: debug
 ```
 
 **RedisConfig.java**
@@ -288,8 +288,6 @@ public class UserController {
   "click": 2
 }
 ```
-
----
 
 ## References
 

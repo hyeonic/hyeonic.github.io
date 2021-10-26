@@ -89,14 +89,8 @@ public class ArrayList<E> extends AbstractList<E>
 ```
 
  * `public ArrayList(int initialCapacity)`: 배열의 초기 용량을 매개변수로 받는 생성자이다.
- * `public ArrayList()`: 아무것도 받지 않는 기본 생성자이다.
+ * `public ArrayList()`: 아무것도 받지 않는 기본 생성자이다. 빈 배열을 생성한다.
  * `public ArrayList(Collection<? extends E> c)`: Collection 타입을 매개변수로 받는 생성자이다.
-
-`Collection` 타입의 매개변수를 제외하면 보통 배열의 초기 용량은 10으로 설정된다.
-
-```java
-private static final int DEFAULT_CAPACITY = 10;
-```
 
 ### 용량 초과!
 

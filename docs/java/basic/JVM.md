@@ -92,10 +92,6 @@ Location location = new Location(2, 5);
  * 한 번에 전체를 컴파일하기 때문에 `Interpreter`보다 오래 걸린다. 만약 한 번만 실행되는 코드라면 `JIT Compiler`를 사용하는 것 보다 `Interpreter`를 사용하는 것이 유리하다. JIT Compiler는 JVM 내부적으로 해당 메서드가 `얼마나 자주 수행`되는지 체크하고 특정한 상황을 넘어서면 compile을 진행한다.
  * `Runtime` 시간에 한꺼번에 변경하여 실행한다.
 
-::: tip
-이렇게 해석된 기계어들이 `Runtime Data Area`에 배치되어 `스레드 동기화`나 `GC`를 수행하게 된다.
-:::
-
 ## Native Method Interface
  * JVM에 의해 실행되는 코드 중 네이티브로 실행하는 것이 있다면 해당 네이티브 코드를 호출하거나 호출될 수 있도록 만든 일종의 프레임워크이다.
  

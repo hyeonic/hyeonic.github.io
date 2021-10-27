@@ -18,6 +18,8 @@ tags: ['REST API', 'RESTful API']
  * 행위(Verb) - HTTP Method
  * 표현(Respreentation)
 
+정리하면 REST는 `HTTP 통신`에서 어떤 자원에 대한 CRUD 요청을 `Resource`와 `Method`로 표현하여 특정한 형태로 전달하는 방식이라고 할 수 있다.
+
 ## REST의 특징 (제약 조건)
  1. Uniform (유니폼 인터페이스)
   * Uniform Interface는 URI로 지정한 리소스에 대한 조작을 통일되고 한정적인 인터페이스로 수행하는 아키텍처 스타일을 말한다.
@@ -26,7 +28,7 @@ tags: ['REST API', 'RESTful API']
   * REST는 작업을 위한 `상태 정보`를 따로 저장하고 관리하지 않는다. 세션 정보나 쿠키 정보를 별도로 저장하고 관리하지 않기 때문에 API 서버는 들어오는 요청을 `단순히 처리`하기만 하면된다. 이점으로는 서비스의 자유도 높아지고 불필요한 정보를 관리하기 않기 때문에 구현이 단순해진다.
 
  3. Cacheable (캐시 가능)
- * REST의 가장 큰 특징 중 하나는 `HTTP라는 기존 웹 표준을 그대로 사용`하기 때문에 기존 인프라를 그대로 활용 가능하다. 그렇기 때문에 HTTP가 가진 `캐싱 기능`이 적용 가등하다. HTTP 표준에서 사용하는 `Last-Modified` 태그나 `E-Tag`를 이용하면 캐싱 구현이 가능하다.
+ * REST의 가장 큰 특징 중 하나는 `HTTP라는 기존 웹 표준을 그대로 사용`하기 때문에 기존 인프라를 그대로 활용 가능하다. 그렇기 때문에 HTTP가 가진 `캐싱 기능`이 적용 가능하다. HTTP 표준에서 사용하는 `Last-Modified` 태그나 `E-Tag`를 이용하면 캐싱 구현이 가능하다.
 
 4. Self-descriptiveness (자체 표현 구조)
  *  REST의 또 다른 큰 특징 중 하나는 REST API 메시지만 보고 쉽게 이해할 수 있는 `자체 표현 구조`로 되어 있다.
@@ -68,6 +70,7 @@ tags: ['REST API', 'RESTful API']
 
 [REST API 제대로 알고 사용하기](https://meetup.toast.com/posts/92)<br>
 [RESTful에 대해서 설명해주세요.(REST, RESTful, RESTful API 개념 정리)](https://jeong-pro.tistory.com/180)<br>
-[Microsoft REST API Guidelines](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md)
+[Microsoft REST API Guidelines](https://github.com/Microsoft/api-guidelines/blob/vNext/Guidelines.md)<br>
+[[Server] Restful API란?](https://mangkyu.tistory.com/46)
 
 <TagLinks />

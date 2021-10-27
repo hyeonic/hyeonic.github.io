@@ -32,7 +32,7 @@ JVM이 `.java` 파일을 `.class` 파일로 컴파일하는 것이 아니다. �
 정리하면 Java를 공부하고 개발하기 위해서는 `JDK`가 필요하다.
 
 <p align=center>
-    <img src=https://user-images.githubusercontent.com/59357153/137770071-62cb6a46-a47b-4f5c-be49-ab307bd5d70f.png>
+    <img src=https://user-images.githubusercontent.com/59357153/139062481-bec74b72-582a-40fd-9259-f20ea1f126f9.png>
 </p>
 
 ## References

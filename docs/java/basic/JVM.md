@@ -78,8 +78,7 @@ Location location = new Location(2, 5);
  * `Java` 프로그램이 컴파일되어 생성되는 `바이트코드`가 아닌 실제 실행할 수 있는 기계어로 작성된 프로그램을 실행시키는 영역이다.
 
 ### Execution Engine
- * `Runtime Data Area`에 로딩된 클래스파일이 `execution engine`을 통해 해석될 차례이다.
- * `execution engine`은 로드된 클래스 파일의 `바이트코드`를 실행시키는 엔진이다.
+ * JVM은 Java 컴파일러가 컴파일한 ByteCode를 ClassLoader를 이용해 Runtime Data Area에 실행 가능한 상태로 적재한다. `Execution Engine`은 `Runtime Data Area`에 할당된 `바이트코드`를 `실행하는 역할`을 담당한다.
  * 바이트코드를 실행시키기 위해서는 `바이트코드`를 컴퓨터가 이해할 수 있는 `기계어`로 바꾸는 작업이 필요한데, `interpreter`와 `jit compiler`가 해당 역할을 진행한다.
 
 #### Interpreter

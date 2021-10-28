@@ -72,7 +72,7 @@ Location location = new Location(2, 5);
  * CPU Register의 PC를 의미하는 것이 아니다.
  * 스레드가 시작될 때 생성되며, 현재 수행중인 JVM의 `명령어 주소`를 `저장`하는 공간이다. 스레드가 어떤 명령어로 수행할지를 저장하는 공간이다.
 
-## Native Method Stack
+#### Native Method Stack
  * Native Method Stack은 Java가 아닌 다른 언어로 작성된 코드를 위한 공간이다.
  * 즉 `JNI(Java Native Interface)`를 통해 호출하는 `C/C++` 등의 코드를 수행하기 위한 공간
  * `Java` 프로그램이 컴파일되어 생성되는 `바이트코드`가 아닌 실제 실행할 수 있는 기계어로 작성된 프로그램을 실행시키는 영역이다.

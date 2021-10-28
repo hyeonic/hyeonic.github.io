@@ -1,4 +1,5 @@
 ---
+title: DTO와 VO 그리고 Entity
 tags: ['dto', 'vo', 'entity']
 ---
 
@@ -36,8 +37,6 @@ public class UserDto {
 }
 ```
 
----
-
 ## VO
 
 `Value Object`로 `값 그 자체`를 표현하는 `객체`이다. 특별한 `로직`을 포함할 수 있으며, 객체의 `불변성(객체의 정보가 변경되지 않는 것)`을 보장한다. 
@@ -70,8 +69,6 @@ public class User {
 }
 ```
 
----
-
 ## Entity
 
 실제 `DB`의 `테이블`과 매핑되는 `객체`이다. 식별자인 `id`를 통하여 각각의 `Entity`를 구분할 수 있다. 또한 추가적인 `로직`을 포함할 수 잇다. 
@@ -98,15 +95,11 @@ public class User {
 }
 ```
 
----
-
 ## DTO 와 VO
 
 보통 웹 개발에서 `DTO`와 `VO`를 `혼용`해서 사용하곤 한다. 하지만 두 `객체`는 의미를 살펴보아도 서로 다른 점을 가지고 있다. 이제는 두 개의 `차이점`을 잘 구분해야 한다.
 
 또한 `DTO`를 `VO`처럼 `불변 객체`로 사용하면 얻는 이점은 전송하는 과정에서 데이터가 변조되지 않음을 보장한다. 
-
----
 
 ## Entity 와 DTO
 
@@ -114,9 +107,7 @@ public class User {
 
 이와 비슷하게 `DTO`에서 `Entity` 클래스를 참조하는 것은 괜찮지만 `Entity`에서 `DTO`를 참조하여 사용하는 것은 바람직하지 않다. 앞서 말했던 것 처럼 `DTO`의 속성이 변하게 되면 그것을 참조하는 `Entity`에게도 예상치 못하는 수정을 야기할 수 있기 때문이다.
 
----
-
-## References.
+## References
 
 [[10분 테코톡] 🎼라흐의 DTO vs VO](https://www.youtube.com/watch?v=J_Dr6R0Ov8E&t=258s)
 

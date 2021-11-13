@@ -131,7 +131,7 @@ public interface PrivilegedAction<T> {
 
 함수형 인터페이스의 추상 메서드 시그니처는 람다 표현식의 시그니처를 가리킨다. 람다 표현식의 시그니처를 서술하는 메서드를 **함수 디스크립터<sup>function descriptor</sup>** 라고 부른다.
 
-`() -> void` 표기는 파라미터 리스트가 없으면 `void`를 반환하는 함수를 의미한다. 즉 한 개의 void 메서드 호풀은 중괄호로 감쌀 필요가 없다.
+`() -> void` 표기는 파라미터 리스트가 없으면 `void`를 반환하는 함수를 의미한다. 즉 한 개의 void 메서드 호출은 중괄호로 감쌀 필요가 없다.
 
 ```java
 process(() -> System.out.println("This is Awesome"));

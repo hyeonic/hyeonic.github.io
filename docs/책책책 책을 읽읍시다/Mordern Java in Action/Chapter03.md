@@ -507,6 +507,26 @@ public static <T, R> List<R> map(List<T> list, Function<T, R> f) {
 }
 ```
 
+::: tip 퀴즈 3-7
+
+지금까지 인수가 없거나, 하나 또는 둘인 생성자를 생성자 참조로 바꾸는 방법을 살펴보았다. Color(int, int, int) 처럼 인수가 세 개인 생성자의 생성자 참조를 사용하려면 어떻게 해야 할까?
+
+**정답**
+생성자 참조 문법은 `ClassName::new`이므로 Color 생성자의 참조는 Color::new가 된다. 하지만 이를 사용하기 위해서는 생성자 참조와 일치하는 시그니처를 갖는 함수형 인터페이스가 필요하다. 현재 이런 시그니처를 갖는 함수형 인터페이스를 제공되지 않기 때문에 직접 다음과 같은 함수형 인터페이스를 만들어야 한다.
+
+```java
+public interface TriFunction<T, U, V, R> {
+    R apply(T t, U u, V v);
+}
+```
+
+이제 다음처럼 새로운 생성자 참조를 사용할 수 있다.
+
+```java
+TriFunction<Integer, Integer, Integer, Color> colorFactory = Color::new;
+```
+:::
+
 ## 3.7 람다, 메서드 참조 활용하기
 
 ### 3.7.1 1단계: 코드 전달

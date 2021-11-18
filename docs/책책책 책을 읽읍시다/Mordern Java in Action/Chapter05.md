@@ -266,8 +266,8 @@ boolean isHealthy = menu.stream()
 
 `anyMatch`, `allMatch`, `noneMatch` 세 메서드는 스트림 **쇼트서킷** 기법, 즉 자바의 `&&`, `||`와 같은 연산을 활용한다.
 
-::: tip
-**쇼트-서킷 (Short-Circuit)** 조건문에서 여러 개의 조건을 중첩할 때 &&, ||와 같은 연산자는 참 거짓이 확정되면 뒤의 조건은 검사하지 않는다. 
+::: tip 쇼트-서킷 (Short-Circuit)
+조건문에서 여러 개의 조건을 중첩할 때 &&, ||와 같은 연산자는 참 거짓이 확정되면 뒤의 조건은 검사하지 않는다. 
 
 스트림에서 allMatch, noneMatch, findFirst, findAny 등의 연산은 모든 스트림 요소를 처리하지 않고도 결과를 반환할 수 있다. 원하는 요소를 찾으면 즉시 결과를 반환한다. limit도 쇼트서킷 연산의 일종이다.
 :::

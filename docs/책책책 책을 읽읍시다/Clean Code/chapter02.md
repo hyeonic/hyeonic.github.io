@@ -187,6 +187,6 @@ public class GuessStatisticsMessage {
 
 ## References
 
-로버트 C.마틴, 『Clean Code』, 도서출판인사이트(2013), p21-65.
+로버트 C.마틴, 『Clean Code』, 도서출판인사이트(2013), p21-38.
 
 <TagLinks />

@@ -13,8 +13,6 @@ features:
     details: Spring 기본 개념 및 이슈 정리
   - title: JPA
     details: JPA 기본 개념 및 이슈 정리
-  - title: 책책책 책을 읽읍시다.
-    details: 개발 서적 정리
   - title: Info
     details: github과 개발한 프로젝트 소개
 ---

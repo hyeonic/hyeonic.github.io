@@ -41,5 +41,10 @@ module.exports = {
       ['@vuepress/search', {
         searchMaxSuggestions: 10
       }]
-    ]
+    ],
+    markdown: {
+      extendMarkdown: md => {
+        md.use(require('markdown-it-task-lists'))
+      }
+    }
 };

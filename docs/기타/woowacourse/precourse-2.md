@@ -11,7 +11,18 @@ tags: ['우아한테크코스', '프리코스']
 
 [미션 - 자동차 경주 게임](https://github.com/woowacourse/java-racingcar-precourse)
 
-## 구현 기능 목록
+## 목차
+
+ * [1. 살아 있는 문서](#_1-살아-있는-문서)
+ * [2. 매직 넘버, 매직 리터럴](#_2-매직-넘버-매직-리터럴)
+ * [3. Car, Strategy Pattern 적용](#_3-car-strategy-pattern-적용)
+ * [4. 캡슐화](#_4-캡슐화)
+ * [5. String의 split 메서드](#_5-string의-split-메서드)
+ * [6. 모든 원시값과 문자열을 포장하라](#_6-모든-원시값과-문자열을-포장하라)
+ * [7. 단위 테스트 명명법](#_7-단위-테스트-명명법)
+ * [References](#references)
+
+## 1. 살아 있는 문서
 
 아래는 1주차 공통 피드백에 담긴 내용들이다.
 
@@ -26,10 +37,6 @@ README.md 파일에 작성하는 기능 목록은 기능 구현을 하면서 `�
 위와 같은 사항들을 확인할 수 있었다. 피드백을 기반으로 `살아 있는 문서`를 만들기 위해 노력한다.
 
 ::: details ver 0.1 기능 목록
-## 🛠 구현 기능 목록
-
-초간단 자동차 경주 게임을 구현한다.
-
 ### 1. 자동차
  * [ ] 자동차는 이름을 가질 수 있다.
  * [ ] 자동차의 이름은 `5자 이하`만 가능하다.
@@ -52,10 +59,6 @@ README.md 파일에 작성하는 기능 목록은 기능 구현을 하면서 `�
 :::
 
 ::: details ver 0.2 기능 목록
-## 🛠 구현 기능 목록
-
-초간단 자동차 경주 게임을 구현한다.
-
 ### 1. 자동차
  * [ ] 자동차는 이름을 가질 수 있다.
  * [ ] 자동차의 이름은 `5자 이하`만 가능하다.
@@ -80,10 +83,6 @@ README.md 파일에 작성하는 기능 목록은 기능 구현을 하면서 `�
 :::
 
 ::: details ver 0.3 기능 목록
-## 🛠 구현 기능 목록
-
-초간단 자동차 경주 게임을 구현한다.
-
 ### 1. 자동차
  * [ ] 자동차는 이름을 가질 수 있다.
  * [ ] 자동차의 이름은 `5자 이하`만 가능하다.
@@ -114,10 +113,6 @@ README.md 파일에 작성하는 기능 목록은 기능 구현을 하면서 `�
 :::
 
 ::: details ver 0.4 기능 목록
-## 🛠 구현 기능 목록
-
-초간단 자동차 경주 게임을 구현한다.
-
 ### 1. 자동차
  * [ ] 자동차는 이름을 가질 수 있다.
  * [ ] 자동차의 이름은 `5자 이하`만 가능하다.
@@ -152,7 +147,47 @@ README.md 파일에 작성하는 기능 목록은 기능 구현을 하면서 `�
  * [ ] `IllegalArgumentException`이 발생할 경우 `"[ERROR]"로 시작하는 에러 메시지 출력`을 진행한다.
 :::
 
-## 매직 넘버, 매직 리터럴
+::: details ver 0.5 기능 목록
+### 1. 자동차
+ * [ ] 자동차는 이름을 가질 수 있다.
+ * [ ] 자동차의 이름은 `5자 이하`만 가능하다.
+ * [ ] 자동차의 이름은 `공백`이거나 `비어있는 경우` 예외 처리를 진행한다. 아래는 예외 처리가 일어날 수 있는 이름의 예시이다. 
+    * ` ` 
+    * `null` 
+ * [ ] 자동차는 전진 또는 멈출 수 있다.
+ * [ ] 자동차는 이동 유무를 판단하는 `isMoving` 메서드를 가진 `MovingPolicy` 인터페이스를 가진다.
+    * [ ] 자동차의 전진 유무는 `MovingPolicy`의 `isMoving`을 통해 확인한다.
+    * [ ] `MovingPolicy`의 구현체인 `RandomMovingPolicy`을 활용하여 0에서 9 사이에 무작위 값을 구한 후 무작위 값이 4 이상일 경우 전진한다.
+ 
+### 2. 입력
+ * [ ] 경주할 자동차 이름을 입력 받는다.
+    * [ ] 경주할 자동차 이름은 쉼표를 기준으로 나눈다.
+    * [ ] 입력 받은 자동차 이름은 검증을 마친 후 List로 변환되어 전달한다.
+ * [ ] 시도할 회수를 입력 받는다.
+    * [ ] 시도할 회수가 숫자가 아니면 예외를 던진다.
+
+### 3. 시도 회수
+* [ ] 시도할 회수를 표현하기 위한 역할을 가진다. ✚
+* [ ] 시도할 회수가 `숫자가 아니면` 예외를 던진다. ✚
+* [ ] 시도할 회수가 `음수`이면 예외를 던진다. ✚
+
+### 4. 자동차 리스트
+ * [ ] 자동차들을 관리하는 일급 컬렉션이다. 
+ * [ ] 자동차들을 일괄적으로 움직이게 한다.
+ * [ ] 각 차수별 실행 결과를 만들어 반환한다. 
+ * [ ] 최종 우승자 안내 문구를 제공한다.
+
+### 5. 게임 실행
+ * [ ] 레이싱 게임을 실행할 수 있다.
+ * [ ] 레이싱 게임은 반복되지 않는다.
+ * [ ] 예외 처리가 일어나면 해당 에러 메시지를 출력한 후 입력을 다시 받는다.
+
+### 6. 출력
+ * [ ] 결과값 출력에 대한 전반적인 책임을 가진다.
+ * [ ] `IllegalArgumentException`이 발생할 경우 `"[ERROR]"로 시작하는 에러 메시지 출력`을 진행한다.
+:::
+
+## 2. 매직 넘버, 매직 리터럴
 
 ::: tip 매직 넘버를 사용하지 마라
 매직 넘버는 의미를 나타낼 수 있는 상수(static final)로 치환하여 코드의 가독성을 높인다.
@@ -205,7 +240,6 @@ public class InputView {
     private static final String INPUT_TRY_COUNT_MESSAGE = "시도할 회수는 몇회인가요?";
     private static final String SPLIT_REGEX = ",";
     private static final int SPLIT_LIMIT = -1;
-    private static final int ZERO_NUMBER = 0;
 
     public List<String> getNames() {
         System.out.println(INPUT_NAMES_MESSAGE);
@@ -214,25 +248,20 @@ public class InputView {
         return new ArrayList<>(Arrays.asList(names));
     }
 
-    public int getTryCount() {
+    public TryCount getTryCount() {
         System.out.println(INPUT_TRY_COUNT_MESSAGE);
         String inputTryCount = Console.readLine();
-        validateNumberFormat(inputTryCount);
-
-        int tryCount = Integer.parseInt(inputTryCount);
-        validateNegativeNumber(tryCount);
-        return tryCount;
+        return new TryCount(inputTryCount);
     }
-    ...
 }
 ```
 
-## 자동차의 이름과 위치를 관리하는 Car
+## 3. Car, Strategy Pattern 적용
 
 ### Strategy Pattern 도입 배경
 
-::: tip
-Strategy Pattern의 자세한 정리는 [Strategy Pattern](https://hyeonic.github.io/design%20pattern/behavior%20pattern/Strategy%20Pattern.html)에 작성하였다.
+::: tip Strategy Pattern
+자세한 정리는 [Strategy Pattern](https://hyeonic.github.io/design%20pattern/behavior%20pattern/Strategy%20Pattern.html)에 작성하였다.
 :::
 
 기존 Car 객체 설계 당시 단순히 `내부`에서 랜덤한 값을 활용하여 `이동 여부를 처리`하였다.
@@ -275,9 +304,9 @@ public class Car {
 } 
 ```
 
-당장 구현에 문제는 없었지만 Car에 `많은 책임`을 가지고 있지 않은지에 대한 고민과 `단위 테스트 작성` 시 move 내부를 제어할 수 없기 때문에 정상적인 테스트를 작성하는데 제한이 되었다.
+당장 구현에 문제는 없었지만 Car에 `많은 책임`을 가지고 있지 않은지에 대한 고민과 `단위 테스트 작성` 시 `move 메서드 내부를 제어`할 수 없기 때문에 정상적인 테스트를 작성하는데 제한이 되었다.
 
-그때 Strategy Pattern에 대해 공부하게 되었다. `Strategy Pattern`은 `실행 중`에 `알고리즘을 선택`할 수 있게 도와준다.
+그때 `Strategy Pattern`에 대해 공부하게 되었다. `Strategy Pattern`은 `실행 중`에 `알고리즘을 선택`할 수 있게 도와준다.
 
 `Car`에서 `isMoving`을 전략으로 활용하여 `실행 시점`에 `이동 여부를 반환`할 수 있도록 적용하면 좋을 것 같다는 판단을 세우게 되었다.
 
@@ -355,7 +384,7 @@ public class Car {
 ```java
 class CarTest {
     ...
-        @DisplayName("movingPolicy의 isMoving이 true이면 position이 1 증가한다.")
+    @DisplayName("movingPolicy의 isMoving이 true이면 position이 1 증가한다.")
     @Test
     void move_IsMovingThenTrue_IncreasePosition() {
         // given
@@ -388,7 +417,7 @@ class CarTest {
 
 이제 ``Car``의 `move`를 자유롭게 테스트 가능하다. 테스트 시점에 이동 정책을 생성한 뒤 `move`를 진행하면 반환된 결과에 따라 Car의 `position`이 변하는 것을 확인하였다.
 
-## 캡슐화
+## 4. 캡슐화
 
 객체를 사용하면 변경 가능성이 높은 부분은 내부에 숨기고 외부에는 상대적으로 안정적인 부분만 공개함으로써 변경의 여파를 통제할 수 있다. `캡슐화`는 외부에서 알 필요가 없는 부분을 감춤으로써 대상을 단순화하는 추상화의 종류이다. `캡슐화`는 변경 가능성이 높은 부분을 객체 내부로 숨기는 추상화 기법이다.
 
@@ -420,11 +449,15 @@ public class Car {
 }
 ```
 
-하지만 `get/set 메서드`들은 객체 내부를 전혀 캡슐화 하지 못하고 있다. 오히려 보호해야할 내부의 `상태 정보를 그대로 보여주고 있다.`
+하지만 `get/set 메서드`들은 객체 내부를 `전혀 보호 하지 못하고 있다.` 오히려 내부의 `상태 정보를 그대로 보여주고 있다.`
 
 객체는 `스스로의 상태를 책임`져야 하며 외부에서는 `인터페이스에 정의된 메서드`를 통해서만 상태에 접근할 수 있어야 한다.
 
 ### Car 리스트를 가지는 일급 컬렉션 Cars
+
+::: tip 일급 컬렉션
+해당 내용의 예시와 이점은 [일급 컬렉션](https://hyeonic.github.io/java/basic/first-class-collection.html)에 정리해두었다.
+:::
 
 레이싱 게임에서 여러 개의 Car list 관리를 위해 `일급 컬렉션` `Cars`를 사용하였다. Cars에서는 Car의 `내부 상태인 position`을 활용하여 `우승자를 선정`하고 `name을 조회`해야 했다. 이것을 구현하기 위해서는 Car의 내부 상태를 드러내는 `get 메서드`가 불가피하게 사용된다.
 
@@ -478,49 +511,9 @@ Car의 메서드는 protected로 접근 제어자를 활용하였다.
 
 ```java
 public class Car {
-    private static final int DEFAULT_POSITION = 0;
-    private static final char NAME_BLANK = ' ';
-    private static final int NAME_MAX_LENGTH = 5;
-    private static final String NAME_MESSAGE = "%s : ";
     private static final int ZERO_INDEX = 0;
     private static final String MOVING_STICK = "-";
-
-    private final String name;
-    private final MovingPolicy movingPolicy;
-    private int position = DEFAULT_POSITION;
-
-    public Car(String name, MovingPolicy movingPolicy) {
-        validateName(name);
-        this.name = name;
-        this.movingPolicy = movingPolicy;
-    }
-
-    private void validateName(String name) {
-        validateEmpty(name);
-        validateBlank(name);
-        validateLength(name);
-    }
-
-    private void validateEmpty(String name) {
-        if (name.isEmpty()) {
-            throw new IllegalArgumentException(CAR_NAME_NOT_VALID.getMessage());
-        }
-    }
-
-    private void validateBlank(String name) {
-        for (char c : name.toCharArray()) {
-            if (c != NAME_BLANK) {
-                return;
-            }
-        }
-        throw new IllegalArgumentException(CAR_NAME_NOT_VALID.getMessage());
-    }
-
-    private void validateLength(String name) {
-        if (name.length() > NAME_MAX_LENGTH) {
-            throw new IllegalArgumentException(CAR_NAME_NOT_VALID.getMessage());
-        }
-    }
+    ...
     
     protected void move() {
         if (movingPolicy.isMoving()) {
@@ -554,12 +547,12 @@ public class Car {
 ```
 
 <p align=center>
-    <img src=https://user-images.githubusercontent.com/59357153/144700758-6ac9667f-055f-4585-9084-c5aa4411e8d1.png>
+    <img src=https://user-images.githubusercontent.com/59357153/144742656-7207a192-5d23-4b29-93d8-e80ccf207736.png>
 </p>
 
 이러한 패키지 구조를 갖기 때문에 외부 다른 패키지에서는 Car의 `protected` 메서드에 접근하지 못한다.
 
-## String의 split 메서드
+## 5. String의 split 메서드
 
 기능 요구 사항을 살펴보면 자동차 이름은 쉼표(,)를 기준으로 구분하여 사용한다. Java에서 구분자를 통한 문자열을 나누기 위해서는 흔히 `split` 메서드를 활용한다.
 
@@ -691,6 +684,167 @@ class InputViewTest {
 }
 ```
 
+## 6. 모든 원시값과 문자열을 포장하라
+ 
+::: tip 규칙3: 원시값과 문자열의 포장
+int 값 하나 자체는 그냥 아무 의미 없는 스칼라 값일 뿐이다. 어떤 메서드가 int 값을 매개변수로 받는다면 그 메서드 이름은 해당 매개변수의 의도를 나타내기 위해 모든 수단과 방법을 가리지 않아야 한다. 
+
+원시형 변수로는 컴파일러가 의미적으로 맞는 프로그램 작성을 안내할 수 없다. 객체로라면 아주 사소하더라도 컴파일러와 프로그래머에게 그 값이 어떤 값이며, 왜 쓰고 있는지에 대한 정보를 전하는 셈이다.
+
+*[소트웍스 앤솔러지](http://www.yes24.com/Product/Goods/3290339)를 일부분 발췌한 내용입니다.* 
+:::
+
+### 원시 타입을 포장해야 하는 이유
+
+#### 자신의 상태를 스스로 관리할 수 있다
+
+아래 코드는 프리코스 제출 코드 일부분을 가져온 것이다.
+
+```java
+public class TryCount {
+    private int tryCount;
+
+    public TryCount(String inputTryCount) {
+        this.tryCount = Integer.parseInt(inputTryCount);
+    }
+}
+```
+
+`TryCount`는 시도 횟수인 `원시 타입 int`를 가진 클래스이다. 내부에 `tryCount라는 상태`를 가지고 있기 때문에 해당 원시 타입에 대한 검증은 `TryCount 내부`에서 적용 가능하다. 
+
+#### 적용
+
+기존에는 시도 횟수를 입력 받으면 `InputView`에서 `모든 검증`을 진행하였다. `getTryCount`는 검증이 진행되고 난 후 단순히 원시 타입 int를 반환하고 있다.
+
+```java
+public class InputView {
+    private static final String INPUT_TRY_COUNT_MESSAGE = "시도할 회수는 몇회인가요?";
+    private static final int ZERO_NUMBER = 0;
+    ...
+
+    public int getTryCount() {
+        System.out.println(INPUT_TRY_COUNT_MESSAGE);
+        String inputTryCount = Console.readLine();
+        validateNumberFormat(inputTryCount);
+
+        int tryCount = Integer.parseInt(inputTryCount);
+        validateNegativeNumber(tryCount);
+        return tryCount;
+    }
+
+    private void validateNumberFormat(String inputTryCount) {
+        try {
+            Integer.parseInt(inputTryCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateNegativeNumber(int parseTryCount) {
+        if (parseTryCount < ZERO_NUMBER) {
+            throw new IllegalArgumentException();
+        }
+    }
+} 
+```
+
+이제 `TryCount`로 원시 타입을 포장한 뒤 모든 검증을 객체 내부로 이동시켰다. TryCount는 내부 상태에 대한 검증 및 책임을 모두 가지고 있다. 또한 내부 상태를 활용하는 행위가 필요하다면 단순히 추가해주기면 하면 된다.
+
+```java
+public class TryCount {
+    private static final int ZERO_NUMBER = 0;
+
+    private int tryCount;
+
+    public TryCount(String inputTryCount) {
+        validateNumberFormat(inputTryCount);
+        int tryCount = Integer.parseInt(inputTryCount);
+        validateNegativeNumber(tryCount);
+        this.tryCount = tryCount;
+    }
+
+    private void validateNumberFormat(String inputTryCount) {
+        try {
+            Integer.parseInt(inputTryCount);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(NUMBER_FORMAT_NOT_VALID.getMessage());
+        }
+    }
+
+    private void validateNegativeNumber(int parseTryCount) {
+        if (parseTryCount < ZERO_NUMBER) {
+            throw new IllegalArgumentException(NEGATIVE_NUMBER_NOT_VALID.getMessage());
+        }
+    }
+    ...
+}
+```
+
+개선된 `InputView`이다. 오직 입력에 대한 책임을 뚜렷하게 나타내기 위해 노력하였다.
+
+```java
+public class InputView {
+    private static final String INPUT_NAMES_MESSAGE = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    private static final String INPUT_TRY_COUNT_MESSAGE = "시도할 회수는 몇회인가요?";
+    private static final String SPLIT_REGEX = ",";
+    private static final int SPLIT_LIMIT = -1;
+
+    public List<String> getNames() {
+        System.out.println(INPUT_NAMES_MESSAGE);
+        String inputNames = Console.readLine();
+        String[] names = inputNames.split(SPLIT_REGEX, SPLIT_LIMIT);
+        return new ArrayList<>(Arrays.asList(names));
+    }
+
+    public TryCount getTryCount() {
+        System.out.println(INPUT_TRY_COUNT_MESSAGE);
+        String inputTryCount = Console.readLine();
+        return new TryCount(inputTryCount);
+    }
+}
+```
+
+## 7. 단위 테스트 명명법
+
+단위 테스트를 진행하며 이름을 짓고 명명법을 통일하기 위해 많은 고민을 하였다. 그러던 중 [7 Popular Unit Test Naming Conventions](https://dzone.com/articles/7-popular-unit-test-naming)을 발견하게 되었다. 
+
+::: tip [번역] 7 Popular Unit Test Naming Conventions
+[7 Popular Unit Test Naming Conventions](https://dzone.com/articles/7-popular-unit-test-naming)을 간단히 해석하여 정리한 자료는 [[번역] 7 Popular Unit Test Naming Conventions](https://hyeonic.github.io/java/test/7-popular-unit-test-naming-convetions.html)에서 확인할 수 있다.
+:::
+
+크게 7가지 방법을 소개하고 있다. 우선 좋은 명명법 보다 통일성 있는 이름과 단위 테스트의 퀄리티를 올리기 위해 1번을 선택하게 되었다. 
+
+1번 방법의 단점으로는 테스트 하고자 하는 `메서드의 이름을 포함하여 이름 짓기 때문에 메서드가 변경되면 단위 테스트 또한 변경을 진행해야 한다.` 덕분에 이러한 단점을 확실히 느낄 수 있는 계기가 되었다.
+
+아래는 실제 작성한 단위 테스트의 일부를 가져온 것이다.
+
+```java
+class TryCountTest {
+    @DisplayName("문자열 시도 횟수가 숫자이고 음수가 아니면 정상적으로 생성된다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1", "2", "3", "4", "5"})
+    void constructor_InputTryCountThenNumberFormatAndNotNegativeNumber_Success(String inputTryCount) {
+        // given & when & then
+        assertThatCode(() -> {
+            new TryCount(inputTryCount);
+        }).doesNotThrowAnyException();
+    }
+
+    @DisplayName("문자열 시도 횟수가 숫자가 아니면 예외를 던진다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1a", "ab", "3a0", "4O", "s5"})
+    void constructor_InputTryCountThenNotNumberFormat_ExceptionThrown(String inputTryCount) {
+        // given & when & then
+        assertThatThrownBy(() -> {
+            new TryCount(inputTryCount);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+    ...
+}
+```
+
+익숙하지 않은 방식이었고 생성자의 경우 어떤식으로 명명해야 하는지 고민이 많았다. 다양한 코드를 접하며 더 좋은 명명법을 적용하기 위해 노력해야 겠다.
+
 ## References
 
 ### 매직 넘버, 매직 리터럴
@@ -703,5 +857,13 @@ class InputViewTest {
 
 ### String split
 [Class String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#split-java.lang.String-int-)<br>
+
+### 모든 원시값과 문자열을 포장하라
+[원시 타입을 포장해야 하는 이유](https://tecoble.techcourse.co.kr/post/2020-05-29-wrap-primitive-type/)<br>
+[[Java] 원시값 포장이란?](https://livenow14.tistory.com/37)<br>
+[더 나은 소프트웨어를 향한 9단계: 객체지향 생활 체조(4)](https://developerfarm.wordpress.com/2012/01/27/object_calisthenics_4/)
+
+### 테스트 코드 명명법
+[7 Popular Unit Test Naming Conventions](https://dzone.com/articles/7-popular-unit-test-naming)
 
 <TagLinks />

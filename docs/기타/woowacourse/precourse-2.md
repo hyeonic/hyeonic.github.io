@@ -14,12 +14,14 @@ tags: ['우아한테크코스', '프리코스']
 ## 목차
 
  * [1. 살아 있는 문서](#_1-살아-있는-문서)
- * [2. 매직 넘버, 매직 리터럴](#_2-매직-넘버-매직-리터럴)
- * [3. Car, Strategy Pattern 적용](#_3-car-strategy-pattern-적용)
- * [4. 캡슐화](#_4-캡슐화)
- * [5. String의 split 메서드](#_5-string의-split-메서드)
- * [6. 모든 원시값과 문자열을 포장하라](#_6-모든-원시값과-문자열을-포장하라)
- * [7. 단위 테스트 명명법](#_7-단위-테스트-명명법)
+ * [2. 구현 순서 맞추기](#_2-구현-순서-맞추기)
+ * [3. 매직 넘버, 매직 리터럴](#_3-매직-넘버-매직-리터럴)
+ * [4. Car, Strategy Pattern 적용](#_4-car-strategy-pattern-적용)
+ * [5. 캡슐화](#_5-캡슐화)
+ * [6. String의 split 메서드](#_6-string의-split-메서드)
+ * [7. String + 연산자보다 StringBuilder](#_7-string-연산자보다-stringbuilder)
+ * [8. 모든 원시값과 문자열을 포장하라](#_7-모든-원시값과-문자열을-포장하라)
+ * [9. 단위 테스트 명명법](#_8-단위-테스트-명명법)
  * [References](#references)
 
 ## 1. 살아 있는 문서
@@ -152,8 +154,9 @@ README.md 파일에 작성하는 기능 목록은 기능 구현을 하면서 `�
  * [ ] 자동차는 이름을 가질 수 있다.
  * [ ] 자동차의 이름은 `5자 이하`만 가능하다.
  * [ ] 자동차의 이름은 `공백`이거나 `비어있는 경우` 예외 처리를 진행한다. 아래는 예외 처리가 일어날 수 있는 이름의 예시이다. 
-    * ` ` 
-    * `null` 
+    * `''`
+    * `' '`
+    * `'   '`
  * [ ] 자동차는 전진 또는 멈출 수 있다.
  * [ ] 자동차는 이동 유무를 판단하는 `isMoving` 메서드를 가진 `MovingPolicy` 인터페이스를 가진다.
     * [ ] 자동차의 전진 유무는 `MovingPolicy`의 `isMoving`을 통해 확인한다.
@@ -164,15 +167,16 @@ README.md 파일에 작성하는 기능 목록은 기능 구현을 하면서 `�
     * [ ] 경주할 자동차 이름은 쉼표를 기준으로 나눈다.
     * [ ] 입력 받은 자동차 이름은 검증을 마친 후 List로 변환되어 전달한다.
  * [ ] 시도할 회수를 입력 받는다.
-    * [ ] 시도할 회수가 숫자가 아니면 예외를 던진다.
 
 ### 3. 시도 회수
 * [ ] 시도할 회수를 표현하기 위한 역할을 가진다. ✚
 * [ ] 시도할 회수가 `숫자가 아니면` 예외를 던진다. ✚
 * [ ] 시도할 회수가 `음수`이면 예외를 던진다. ✚
+* [ ] 시도할 회수가 공백이면 예외를 던진다. ✚
 
 ### 4. 자동차 리스트
  * [ ] 자동차들을 관리하는 일급 컬렉션이다. 
+ * [ ] 자동차의 이름이 `중복`되는 경우 예외를 던진다. ✚
  * [ ] 자동차들을 일괄적으로 움직이게 한다.
  * [ ] 각 차수별 실행 결과를 만들어 반환한다. 
  * [ ] 최종 우승자 안내 문구를 제공한다.
@@ -187,7 +191,22 @@ README.md 파일에 작성하는 기능 목록은 기능 구현을 하면서 `�
  * [ ] `IllegalArgumentException`이 발생할 경우 `"[ERROR]"로 시작하는 에러 메시지 출력`을 진행한다.
 :::
 
-## 2. 매직 넘버, 매직 리터럴
+## 2. 구현 순서 맞추기
+
+::: tip 구현 순서도 코딩 컨벤션이다
+
+클래스는 상수, 멤버 변수, 생성자, 메서드 순으로 작성한다.
+:::
+
+1주차 공통 피드백에서 구현 순서에 따른 피드백도 확인할 수 있었다. 관련 자료를 더 찾아보기 위해 [Clean Code 클린 코드 애자일 소프트웨어 장인 정신](http://www.yes24.com/Product/Goods/11681152)을 참고하였다.
+
+::: tip 형식 맞추기
+책의 세부 내용은 예제 코드를 기반으로 [형식 맞추기](https://hyeonic.github.io/%EA%B8%B0%ED%83%80/clean-code/match-the-format.html)에 작성하였다.
+:::
+
+공통 피드백과 책의 내용을 기반으로 구현 순서에 신경쓰며 작성하기 위해 노력하였다.
+
+## 3. 매직 넘버, 매직 리터럴
 
 ::: tip 매직 넘버를 사용하지 마라
 매직 넘버는 의미를 나타낼 수 있는 상수(static final)로 치환하여 코드의 가독성을 높인다.
@@ -256,7 +275,7 @@ public class InputView {
 }
 ```
 
-## 3. Car, Strategy Pattern 적용
+## 4. Car, Strategy Pattern 적용
 
 ### Strategy Pattern 도입 배경
 
@@ -417,7 +436,7 @@ class CarTest {
 
 이제 ``Car``의 `move`를 자유롭게 테스트 가능하다. 테스트 시점에 이동 정책을 생성한 뒤 `move`를 진행하면 반환된 결과에 따라 Car의 `position`이 변하는 것을 확인하였다.
 
-## 4. 캡슐화
+## 5. 캡슐화
 
 객체를 사용하면 변경 가능성이 높은 부분은 내부에 숨기고 외부에는 상대적으로 안정적인 부분만 공개함으로써 변경의 여파를 통제할 수 있다. `캡슐화`는 외부에서 알 필요가 없는 부분을 감춤으로써 대상을 단순화하는 추상화의 종류이다. `캡슐화`는 변경 가능성이 높은 부분을 객체 내부로 숨기는 추상화 기법이다.
 
@@ -456,7 +475,7 @@ public class Car {
 ### Car 리스트를 가지는 일급 컬렉션 Cars
 
 ::: tip 일급 컬렉션
-해당 내용의 예시와 이점은 [일급 컬렉션](https://hyeonic.github.io/java/basic/first-class-collection.html)에 정리해두었다.
+해당 내용의 예시와 이점은 [일급 컬렉션](https://hyeonic.github.io/java/basic/first-class-collection.html)에 작성하였다.
 :::
 
 레이싱 게임에서 여러 개의 Car list 관리를 위해 `일급 컬렉션` `Cars`를 사용하였다. Cars에서는 Car의 `내부 상태인 position`을 활용하여 `우승자를 선정`하고 `name을 조회`해야 했다. 이것을 구현하기 위해서는 Car의 내부 상태를 드러내는 `get 메서드`가 불가피하게 사용된다.
@@ -552,7 +571,7 @@ public class Car {
 
 이러한 패키지 구조를 갖기 때문에 외부 다른 패키지에서는 Car의 `protected` 메서드에 접근하지 못한다.
 
-## 5. String의 split 메서드
+## 6. String의 split 메서드
 
 기능 요구 사항을 살펴보면 자동차 이름은 쉼표(,)를 기준으로 구분하여 사용한다. Java에서 구분자를 통한 문자열을 나누기 위해서는 흔히 `split` 메서드를 활용한다.
 
@@ -623,7 +642,7 @@ limt이  0일 때: [a]
 limt이 -1일 때: [a]
 ```
 
-가장 큰 차이를 보이는 것은 `a,b,c,d,e,`와 `,,,,`이다. limit이 0일 때는 빈 문자열이 자동으로 폐기되는 것을 확인할 수 있었다.
+가장 큰 차이를 보이는 것은 `a,b,c,d,e,`와 `,,,,`이다. limit이 0일 때는 `후행 빈 문자열이 자동으로 폐기`되는 것을 확인할 수 있었다.
 
 이번 레이싱 게임을 진행하며 자동차의 `이름에 대한 검증`은 모두 `Car`가 책임을 가지도록 하였다. 하지만 자동차의 이름을 `split`하는 것은 `InputView`의 책임으로 설정하였다. 즉 `빈 문자열`이라도 `정확히 나눠서` list로 전달해야 했다. 그래야 온전히 나눠진 문자열 리스트의 요소를 Car에서 검증이 가능하기 때문이다.
 
@@ -684,7 +703,42 @@ class InputViewTest {
 }
 ```
 
-## 6. 모든 원시값과 문자열을 포장하라
+## 7. String + 연산자보다 StringBuilder
+
+String은 `불변 객체`이다. `+ 연산자`를 통해 문자열 객체를 수정할 경우 매번 `새로운 인스턴스`를 생성한다. 
+
+::: tip String, StringBuffer, StringBuilder
+세부적인 관련 내용은 [String, StringBuffer, StringBuilder](https://hyeonic.github.io/java/basic/String-StringBuilder-StringBuffer.html)에 작성하였다.
+:::
+
+Car 객체를 살펴보면 자신의 상태 메시지 반환을 위해 해당 position의 개수 만큼 `-`을 그려야 한다. 여기서 단순히 문자열 + 연산자를 사용하기 보다 `가변적인 문자열에 특화된 StringBuilder`에 대해 학습하고 적용하였다.
+
+```java
+package racingcar.domain.car;
+
+import static racingcar.domain.error.ErrorMessage.*;
+
+public class Car {
+    private static final String NAME_MESSAGE = "%s : ";
+    private static final String MOVING_STICK = "-";
+    ...
+    private final String name;
+    private final MovingPolicy movingPolicy;
+    private int position = DEFAULT_POSITION;
+    ...
+
+    protected String getStateMessage() {
+        StringBuilder stringBuilder = new StringBuilder(String.format(NAME_MESSAGE, name));
+        for (int i = ZERO_INDEX; i < position; i++) {
+            stringBuilder.append(MOVING_STICK);
+        }
+        return stringBuilder.toString();
+    }
+    ...
+}
+```
+
+## 8. 모든 원시값과 문자열을 포장하라
  
 ::: tip 규칙3: 원시값과 문자열의 포장
 int 값 하나 자체는 그냥 아무 의미 없는 스칼라 값일 뿐이다. 어떤 메서드가 int 값을 매개변수로 받는다면 그 메서드 이름은 해당 매개변수의 의도를 나타내기 위해 모든 수단과 방법을 가리지 않아야 한다. 
@@ -804,7 +858,7 @@ public class InputView {
 }
 ```
 
-## 7. 단위 테스트 명명법
+## 9. 단위 테스트 명명법
 
 단위 테스트를 진행하며 이름을 짓고 명명법을 통일하기 위해 많은 고민을 하였다. 그러던 중 [7 Popular Unit Test Naming Conventions](https://dzone.com/articles/7-popular-unit-test-naming)을 발견하게 되었다. 
 

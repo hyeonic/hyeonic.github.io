@@ -22,6 +22,7 @@ tags: ['우아한테크코스', '프리코스']
  * [7. String + 연산자보다 StringBuilder](#_7-string-연산자보다-stringbuilder)
  * [8. 모든 원시값과 문자열을 포장하라](#_7-모든-원시값과-문자열을-포장하라)
  * [9. 단위 테스트 명명법](#_8-단위-테스트-명명법)
+ * [10. git rebase](#_10-git-rebase)
  * [References](#references)
 
 ## 1. 살아 있는 문서
@@ -897,6 +898,14 @@ class TryCountTest {
 ```
 
 익숙하지 않은 방식이었고 생성자의 경우 어떤식으로 명명해야 하는지 고민이 많았다. 다양한 코드를 접하며 더 좋은 명명법을 적용하기 위해 노력해야 겠다.
+
+## 10. git rebase
+
+진행 도중 테스트 코드 일부분이 수정되어 main에서 병합을 진행해야 하는 상황이 주어졌다. 관련 방법을 찾던 도중 `rebase`를 활용하여 적용하기로 결정하였다.
+
+::: tip git rebase
+rebase 키워드를 활용하여 적용한 과정은 [git rebase](https://hyeonic.github.io/git/basic/git-rebase.html)에서 확인할 수 있다.
+:::
 
 ## References
 

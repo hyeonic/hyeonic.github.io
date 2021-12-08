@@ -9,7 +9,8 @@ tags: ['우아한테크코스', '프리코스']
 
 우아한테크코스 4기 프리코스 2주차 미션을 진행하며 고민한 내용을 정리하고 추가적인 개인 목표를 세워 정리해보았다.
 
-[미션 - 자동차 경주 게임](https://github.com/woowacourse/java-racingcar-precourse)
+ * [미션 - 자동차 경주 게임](https://github.com/woowacourse/java-racingcar-precourse)
+ * [제출 코드](https://github.com/hyeonic/java-racingcar-precourse/tree/hyeonic)
 
 ## 목차
 

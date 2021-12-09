@@ -11,6 +11,8 @@ tags: ['우아한테크코스', '프리코스']
 
  * [미션 - 자동차 경주 게임](https://github.com/hyeonic/java-vendingmachine-precourse)
 
+## 목차
+
 ## 구현 목록 정리
 
 2주차 공통 피드백에는 아래와 같은 내용이 담겨 있었다.
@@ -62,5 +64,36 @@ tags: ['우아한테크코스', '프리코스']
  * [ ] 투입 금액을 출력한다.
  * [ ] 잔돈을 출력한다.
 :::
+
+## enum values() 메서드
+
+enum에는 선언하지 않아도 다양한 메서드를 사용할 수 있다. 그 중 하나의 예시는 `values()` 이다. `values()` 메서드는 열거 형의 모든 값을 선언된 순서대로 모든 값을 포함하여 배열을 반환한다.
+
+아래와 같이 동전을 표현하는 enum `Coin`이 있다고 가정한다. 
+```java
+public enum Coin {
+    COIN_500(500),
+    COIN_100(100),
+    COIN_50(50),
+    COIN_10(10);
+
+    private final int amount;
+
+    Coin(final int amount) {
+        this.amount = amount;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+}
+```
+
+아래와 같이 활용 가능하다.
+```java
+for (Coin coin : Coin.values()) {
+    System.out.println(coin);
+}
+```
 
 <TagLinks />

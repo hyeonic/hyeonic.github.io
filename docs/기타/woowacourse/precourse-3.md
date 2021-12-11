@@ -65,6 +65,14 @@ tags: ['우아한테크코스', '프리코스']
  * [ ] 잔돈을 출력한다.
 :::
 
+## MVC 패턴
+
+MVC은 Model-View-Controller의 약자로 하나의 애플리케이션을 구성할 때 구성 요소를 세가지의 역할로 구분한 개발 방법론이다.
+
+::: tip MVC 패턴
+해당 내용의 정리는 [MVC 패턴이란?](https://hyeonic.github.io/design%20pattern/basic/MVC%20%ED%8C%A8%ED%84%B4.html)에서 확인할 수 있다.
+:::
+
 ## enum values() 메서드
 
 enum에는 선언하지 않아도 다양한 메서드를 사용할 수 있다. 그 중 하나의 예시는 `values()` 이다. `values()` 메서드는 열거 형의 모든 값을 선언된 순서대로 모든 값을 포함하여 배열을 반환한다.
@@ -95,5 +103,9 @@ for (Coin coin : Coin.values()) {
     System.out.println(coin);
 }
 ```
+
+::: tip enum
+enum에 대한 자세한 정리는 [enum](https://hyeonic.github.io/java/basic/enum.html)에서 확인할 수 있다.
+:::
 
 <TagLinks />

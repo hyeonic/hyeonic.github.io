@@ -342,7 +342,7 @@ Enum 클래스가 가지고 있는 상수 값을 `배열의 형태로 리턴`한
 이러한 `values()`는 바이트코드를 살펴보면 컴파일 시점에 자동 생성한다.
 
 <p align=center>
-    <img src=https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fq6XgM%2FbtqU93WOlFf%2FE57N7NIENtpciRrHNAe6KK%2Fimg.png>
+    <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fq6XgM%2FbtqU93WOlFf%2FE57N7NIENtpciRrHNAe6KK%2Fimg.png">
 </p>
 
 ### valueOf

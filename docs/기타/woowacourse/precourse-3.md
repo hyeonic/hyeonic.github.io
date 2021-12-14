@@ -7,19 +7,33 @@ tags: ['우아한테크코스', '프리코스']
 
 ## 미션 - 자판기
 
+우아한테크코스 4기 프리코스 3주차 미션을 진행하며 고민한 내용을 정리하고 추가적인 개인 목표를 세워 정리해보았다. 
+
  * [미션 - 자동차 경주 게임](https://github.com/hyeonic/java-vendingmachine-precourse)
+ * [제출 코드](https://github.com/hyeonic/java-vendingmachine-precourse/tree/hyeonic)
 
 ## 목차
 
-## 시작하기 전
+ * [1. 시작하기 전](#_1-시작하기-전)
+ * [2. 구현 목록 정리](#_2-구현-목록-정리)
+ * [3. Can’t automatically merge](#_1-can-t-automatically-merge)
+ * [4. MVC 패턴](#_4-mvc-패턴)
+ * [5. 비즈니스 로직과 UI 로직 분리](#_5-비즈니스-로직과-ui-로직-분리)
+ * [6. Stream 활용](#_6-stream-활용)
+ * [7. enum](#_7-enum)
+ * [8. 객체에게 메시지 보내기](#_8-객체에게-메시지-보내기)
+ * [9. 과도한 검증 코드와 책임의 이전](#_9-과도한-검증-코드와-책임의-이전)
+ * [References](#references)
 
-우아한테크코스 4기 프리코스 3주차 미션을 진행하며 고민한 내용을 정리하고 추가적인 개인 목표를 세워 정리해보았다. 이번 주차에는 다시 한 번 초심으로 돌아가 기존에 주어진 1, 2차 피드백을 최대한 수용하고 객체의 `결합도는 줄이고 응집도를 높이기` 위해 노력하였다. 
+## 1. 시작하기 전
+
+이번 주차에는 다시 한 번 초심으로 돌아가 기존에 주어진 `1, 2차 피드백`을 최대한 수용하고 객체의 `결합도는 줄이고 응집도를 높이기` 위해 노력하였다. 
 
 3차 미션은 확실히 1, 2차보다 난이도가 높다는 느낌이 들었다. 이전에는 객체의 역할이 뚜렷하게 머리에 그려졌지만 다소 복잡한 자판기 로직으로 인해 객체에게 적절한 `역할`과 `책임`을 부여하는데 오랜 시간이 걸렸다. 
 
 또한 현재 진행하고 있는 방식이 적절한지 끊임 없이 의심하였다. 특히 객체의 `응집도`를 높이기 위해 단순히 반복되는 검증 코드들을 남발하는 것이 아닌지 고민이 되었다. 이것은 결국 좋은 설계를 위한 `트레이드 오프`의 과정이라고 생각된다.
 
-## 구현 목록 정리
+## 2. 구현 목록 정리
 
 2주차 공통 피드백에는 아래와 같은 내용이 담겨 있었다.
 
@@ -261,7 +275,7 @@ tags: ['우아한테크코스', '프리코스']
  * [ ] 반환되지 않은 금액은 자판기에 남는다.
 :::
 
-## Can’t automatically merge
+## 3. Can’t automatically merge
 
 미션 해결 중간에 테스트 코드의 수정으로 `upstream repository`에 수정에 관련된 `commit`이 추가되었다. 변경된 소스 코드를 반영하지 않고 직접 수정할 경우 `Pull Request`를 진행할 때 `Can’t automatically merge.`문구를 확인할 수 있다.
 
@@ -279,21 +293,27 @@ tags: ['우아한테크코스', '프리코스']
 자세한 내용은 git 브랜치 전략을 공부하던 중 [Git-flow](https://hyeonic.github.io/git/basic/git-flow.html)를 정리한 내용을 참고하였다. 자세한 내용은 해당 글에서 확인할 수 있다.
 :::
 
-## MVC 패턴
+## 4. MVC 패턴
 
 MVC은 Model-View-Controller의 약자로 하나의 애플리케이션을 구성할 때 구성 요소를 세가지의 역할로 구분한 개발 방법론이다. 특히 소프트웨어의 `비즈니스 로직과 화면을 구분`하는데 중점을 두고 있다. 이러한 `관심사의 분리`는 객체가 각자의 책임을 가질 수 있도록 도와준다.
 
-### Model, View, Controller
+또한 MVC 패턴을 사용하면 Model과 View가 다른 컴포넌트들에 종속되지 않아 변경에 유리하다는 장점을 가진다.
 
- * `모델(Model)`: 데이터와 비즈니스 로직을 관리한다.
- * `뷰(View)`: 레이아웃과 화면을 처리한다.
- * `컨트롤러(Controller)`: 명령을 모델과 뷰 부분으로 라우팅한다.
+### Model
 
-::: tip MVC 패턴
-해당 내용의 정리는 [MVC 패턴이란?](https://hyeonic.github.io/design%20pattern/basic/MVC%20%ED%8C%A8%ED%84%B4.html)에서 확인할 수 있다.
-:::
+내부 비즈니스 로직을 처리하기 위한 역할을 한다. Model은 다른 컴포넌트(ex View, Controller)들에 대해 알지 못한다. `자기 자신이 무엇을 수행하는지`만 알고 있다.
 
-## 비즈니스 로직과 UI 로직 분리
+### View
+
+화면(ex 웹, console 등)에 `무엇`을 보여주기 위한 역할이다. Model이 처리한 데이터나 그 작ㅇ버 결과를 가지고 사용자에게 출력할 화면을 만든다. View 또한 다른 컴포넌트들에 대해 알지 못한다. 단순히 자신이 무엇을 수행하는지만 알고 있다. 
+
+### Controller
+
+Model과 View 사이에 있는 컴포넌트이다. Model이 데이터를 `어떻게 처리`할지 알려주는 역할이다. 클라이언트의 요청을 받으면 해당 요청에 대한 실제 업무를 수행하기 위해 Model을 호출한다. Model이 업무 수행을 완료하면 그 결과를 가지고 화면을 생성하기 위해 View에 전달한다. 클라이언트의 요청에 대해 Model과 View를 결정하여 전달하는 일종의 조정자로서의 일을 진행한다.
+
+`Controller는 다른 컴포넌트들에 대해 알고 있다.` 자기 자신 외에 Model과 View가 무엇을 수행하는지 알고 있다.
+
+## 5. 비즈니스 로직과 UI 로직 분리
 
 ::: tip 비즈니스 로직과 UI 로직을 분리해라
 비즈니스 로직과 UI 로직을 한 클래스가 담당하지 않도록 한다. 단일 책임의 원칙에도 위배된다.
@@ -338,13 +358,10 @@ public class PossessionCoin {
     }
 
     public boolean isExistQuantity() {
-        if (quantity > DEFAULT_QUANTITY) {
-            return true;
-        }
-        return false;
+        return quantity > DEFAULT_QUANTITY;
     }
 
-    public int calculate(InvestmentMoney investmentMoney) {
+    public int calculatePossibleQuantity(InvestmentMoney investmentMoney) {
         return investmentMoney.trade(coin.getAmount(), quantity);
     }
 
@@ -357,7 +374,84 @@ public class PossessionCoin {
 
 위 코드는 실제 미션 코드의 일부분을 가져온 것이다. 모델의 성격을 띄는 `PossessionCoin`이 `UI로직`을 가지지 않도록 조정하였다. 단순히 객체의 상태를 로그 메시지로 만들기 위해 `toString`을 활용하여 구현하였다.
 
-## enum
+## 6. Stream 활용
+
+미션을 진행하며 `메서드 15라인`과 `depth의 제한`을 지키기 위해 노력하였다. 그 중 depth를 지키기 위해 단순 반복문을 사용하기 보다 `Stream`을 활용하여 해결하기 위해 노력하였다.
+
+그중 가장 기억에 남는 리팩터링을 하나 소개해보려 한다.
+
+### 반복문을 활용한 잔돈 계산
+
+```java
+public class PossessionCoins {
+    List<PossessionCoin> possessionCoins;
+
+    public PossessionCoins(List<PossessionCoin> possessionCoins) {
+        this.possessionCoins = possessionCoins;
+    }
+
+    public List<PossessionCoin> getPossessionCoins() {
+        return Collections.unmodifiableList(possessionCoins);
+    }
+
+    public List<Change> takeChange(InvestmentMoney investmentMoney) {
+        List<Change> changes = new ArrayList<>();
+
+        for (PossessionCoin possessionCoin : possessionCoins) {
+            Coin coin = possessionCoin.getCoin();
+            if (possessionCoin.isExistQuantity() && investmentMoney.isPossibleChange(coin)) {
+                int coinQuantity = possessionCoin.calculate(investmentMoney);
+                changes.add(new Change(coin, coinQuantity));
+            }
+        }
+
+        return changes;
+    }
+}
+```
+
+위 코드는 보유 동전 리스트를 가지고 있는 일급 컬렉션이다. 잔돈 계산을 위해서는 `takeChange` 메서드를 활용하여 잔돈 리스트를 반환 받아야 한다. 
+
+최초에 단순 `반복문`을 활용하여 검증을 진행하고 잔돈 개수를 계산하여 잔돈 리스트에 추가하는 로직으로 구성하였다. 하지만 메서드에 많은 기능을 담고 있으며 검증을 위한 `if`가 `&&`의 사용으로 직관적이지 않게 느껴졌다. 위 코드는 `메서드가 한 가지 일만 잘하도록 개선`하고, 로직의 `직관성을 높여야 한다는 필요성`을 느끼게 되었다.
+
+### 개선된 잔돈 계산
+
+```java
+public class PossessionCoins {
+    List<PossessionCoin> possessionCoins;
+
+    public PossessionCoins(List<PossessionCoin> possessionCoins) {
+        this.possessionCoins = possessionCoins;
+    }
+
+    public List<PossessionCoin> getPossessionCoins() {
+        return Collections.unmodifiableList(possessionCoins);
+    }
+
+    public List<Change> takeChange(InvestmentMoney investmentMoney) {
+        return possessionCoins.stream()
+            .filter(PossessionCoin::isExistQuantity)
+            .filter(investmentMoney::isPossibleChange)
+            .map(possessionCoin -> getChange(investmentMoney, possessionCoin))
+            .collect(toList());
+    }
+
+    private Change getChange(InvestmentMoney investmentMoney, PossessionCoin possessionCoin) {
+        int coinQuantity = possessionCoin.calculatePossibleQuantity(investmentMoney);
+        return new Change(possessionCoin.getCoin(), coinQuantity);
+    }
+}
+```
+
+Stream을 활용하여 개선한 `takeChange`이다. 우선 `getChange`을 활용하여 메서드를 분리하였다. 또한 stream의 활용으로 depth를 1까지 줄일 수 있게 되었다. 
+
+이제 보유 동전을 탐색하며 `filter`를 활용한 검증을 진행한다. 그 다음 역할은 나눈 `getChange`를 통해 `mapping`을 진행한 뒤 종료 연산인 `collect`를 통해 `List`를 반환한다. 이전에 복잡하게 얽힌 반복문과 검증 관련 로직을 `Stream`을 통해 `더 나은 가독성`을 갖추도록 노력하였다.
+
+::: tip Stream 학습
+스트림에 대한 학습은 `Modern Java In Action`을 통해 진행하였다. 자세한 정리는 [Chapter04 스트림 소개](https://github.com/Java-Awesome/Javawesome_reading_book/blob/main/%EB%AA%A8%EB%8D%98_%EC%9E%90%EB%B0%94_%EC%9D%B8_%EC%95%A1%EC%85%98/4%EC%9E%A5/4%EC%9E%A5_%EC%B5%9C%EA%B8%B0%ED%98%84.md), [Chapter05 스트림 활용](https://github.com/Java-Awesome/Javawesome_reading_book/blob/main/%EB%AA%A8%EB%8D%98_%EC%9E%90%EB%B0%94_%EC%9D%B8_%EC%95%A1%EC%85%98/5%EC%9E%A5/5%EC%9E%A5_%EC%B5%9C%EA%B8%B0%ED%98%84.md), [Chapter06 스트림으로 데이터 수집](https://github.com/Java-Awesome/Javawesome_reading_book/blob/main/%EB%AA%A8%EB%8D%98_%EC%9E%90%EB%B0%94_%EC%9D%B8_%EC%95%A1%EC%85%98/6%EC%9E%A5/6%EC%9E%A5_%EC%B5%9C%EA%B8%B0%ED%98%84.md) 에서 확인할 수 있다.
+:::
+
+## 7. enum
 
 이번 미션에는 동전을 나타내는 상수들이 열거 타입인 `Coin`으로 주어진다. 우선 이것이 의미하는 바를 파악하기 위해 `enum`의 등장 배경부터 살펴보았다.
 
@@ -455,37 +549,18 @@ public class PossessionCoin {
         this.coin = coin;
         this.quantity = quantity;
     }
-
-    public Coin getCoin() {
-        return coin;
-    }
-
-    public boolean isExistQuantity() {
-        if (quantity > DEFAULT_QUANTITY) {
-            return true;
-        }
-        return false;
-    }
-
-    public int calculate(InvestmentMoney investmentMoney) {
-        return investmentMoney.trade(coin.getAmount(), quantity);
-    }
-
-    @Override
-    public String toString() {
-        return String.format(TO_STRING_FORMAT, coin.getAmount(), quantity);
-    }
+    ...
 }
 ```
 
  * `public PossessionCoin(Coin coin, int quantity)`: 생성자를 살펴보면 Coin 타입으로 받는 것을 확인할 수 있다. 만약 단순히 int로 해당 값을 받게 된다면 500, 100, 50, 10이 아닐 경우 `추가적인 검증`이 필요하게 된다. Coin으로 한정시키게 되면 선언한 상수들만 사용하여 해당 생성자를 활용하도록 `제한`할 수 있다.
 
-## 객체에게 메시지 보내기
+## 8. 객체에게 메시지 보내기
 
 이번 미션을 해결하면서 가장 지키기 어려웠던 사항이었다. 피드백의 일부분을 살펴보면 아래와 같다.
 
 ::: tip 객체에 메시지를 보내라
-상태 데이털르 가지는 객체에서 데이터를 꺼내려 (get)하지 말고 객체에게 메시지를 보내라. 예를 들어 Car가 우승자인지를 판단하기 위해 최대 이동 거리 값을 가지는 Car인지 판단 기능은?
+상태 데이터를 가지는 객체에서 데이터를 꺼내려 (get)하지 말고 객체에게 메시지를 보내라. 예를 들어 Car가 우승자인지를 판단하기 위해 최대 이동 거리 값을 가지는 Car인지 판단 기능은?
 
 ```java
 private boolean isMaxPosition(Car car) {
@@ -532,10 +607,7 @@ public class Product {
     }
 
     public boolean isSameName(String productPurchaseName) {
-        if (this.name.isSame(productPurchaseName)) {
-            return true;
-        }
-        return false;
+        return this.name.isSame(productPurchaseName);
     }
 
     public void receive() {
@@ -546,10 +618,7 @@ public class Product {
     }
 
     public boolean isExistQuantity() {
-        if (quantity.isExistQuantity()) {
-            return true;
-        }
-        return false;
+        return quantity.isExistQuantity();
     }
 }
 ```
@@ -557,7 +626,7 @@ public class Product {
  * `public boolean isSameName(String productPurchaseName)`: 외부에서 구입하기 위한 상품 이름을 전달 받아 동일 여부를 확인하고 반환한다.
  * `public boolean isExistQuantity()`: 상품의 수량의 존재 여부를 반환한다.
 
-위 두 메서드는 나름 `Product`에게 메시지를 보내서 관련 로직을 처리하기 위해 노력하였다. 하지만 문제는 `getPrice`였다.
+위 두 메서드는 `Product`에게 메시지를 보내서 관련 로직을 처리하기 위해 노력하였다. 하지만 문제는 `getPrice`였다.
 
 ### 투입 금액을 관리하는 책임을 가진 InvestmentMoney
 
@@ -584,10 +653,7 @@ public class InvestmentMoney {
     }
 
     public boolean isPay(Product product) {
-        if (investmentMoney >= product.getPrice()) {
-            return true;
-        }
-        return false;
+        return investmentMoney >= product.getPrice();
     }
     ...
 }
@@ -599,7 +665,7 @@ public class InvestmentMoney {
 
 메시지를 전달하는 목적은 결국 협력 안에서 객체가 수행하는 책임에 초점을 맞추기 위해서 이다. 이러한 메시지를 통해 객체는 책임을 갖게 된다. 좀 더 객체지향 패러다임에 맞게 작성을 위해서 `메시지가 객체를 결정`할 수 있도록 시선을 길러야 겠다.
 
-## 과도한 검증 코드
+## 9. 과도한 검증 코드와 책임의 이전
 
 ::: tip Effective Java 아이템 49. 매개변수가 유효한지 검사하라
 메서드나 생성자를 작성할 때면 그 매개변수들에 어떤 제약이 있을지 생각해야 한다. 그 제약들을 문서화하고 메서드 코드 시작 부분에서 명시적으로 검사해야 한다. 이런 습관을 반드시 기르도록 하자. 그 노력은 유효성 검사가 실제 오류를 처음 걸러낼 때 충분히 보상 받을 것이다.
@@ -608,7 +674,9 @@ public class InvestmentMoney {
 *Effective Java 301p*
 :::
 
-위와 같은 내용을 확인하였고 객체 생성 시점에 올바르게 생성이 가능하도록 인스턴스 변수들을 검증하기 위해 다양한 검증 코드를 활용했다. 이러한 검증 관련 코드들은 해당 객체의 인스턴스 변수와 관련된 메서드들 이기 때문에 내부에 위치하는 것이 알맞다고 판단했다. 또한 `단순한 검증`의 경우 단순히 `메서드 추출`을 통해 직관적인 코드를 만들 수 있었다.
+위와 같은 내용을 확인하였고 객체 생성 시점에 올바르게 생성이 가능하도록 인스턴스 변수들을 검증하기 위해 다양한 검증 코드를 활용했다. 
+
+이러한 검증 관련 코드들은 해당 객체의 인스턴스 변수와 관련된 메서드들 이기 때문에 내부에 위치하는 것이 알맞다고 판단 했다. 또한 `단순한 검증`의 경우 `메서드 추출`을 통해 직관적인 코드를 만들 수 있었다.
 
 아래는 검증 로직을 포함한 예시이다.
 ```java
@@ -740,7 +808,7 @@ public class Product {
 }
 ```
 
-비즈니스 로직을 제외한 검증 코드만 100줄이 넘게 채워져 있다. 이것을 개선하기 위해 `원시 타입이 포장된 객체를 활용`하여 객체의 책임을 이전하였다.
+비즈니스 로직을 제외한 검증 코드만 100줄이 넘게 채워져 있다. 이것을 개선하기 위해 `원시 타입이 포장된 객체를 활용`하여 `객체의 책임을 이전`하였다.
 
 ### Name
 
@@ -784,7 +852,7 @@ public class Name {
 }
 ```
 
-Product의 다른 인스턴스 변수(Price, Quantity)들도 동일하게 객체로 포장하여 `책임을 이전`하였다.
+Product의 다른 `인스턴스 변수(Price, Quantity)`들도 동일하게 객체로 포장하여 `책임을 이전`하였다.
 
 ### 개선된 Product
 
@@ -853,7 +921,8 @@ public class Product {
 ## References
 
 ### MVC 패턴
-[세상에서 제일 쉬운 MVC 패턴](https://log.hodol.dev/techcourse/mvc-pattern)
+[세상에서 제일 쉬운 MVC 패턴](https://log.hodol.dev/techcourse/mvc-pattern)<br>
+[웹 MVC 각 컴포넌트 역할](https://tecoble.techcourse.co.kr/post/2021-04-26-mvc/)
 
 ### enum
 [else 예약어를 쓰지 않는다](https://tecoble.techcourse.co.kr/post/2020-07-29-dont-use-else/)<br>

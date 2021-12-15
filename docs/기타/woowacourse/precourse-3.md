@@ -241,6 +241,7 @@ tags: ['우아한테크코스', '프리코스']
  * [ ] `개별 상품`은 대괄호`[]`로 묶어 세미콜론`;`으로 구분한다. ex) `[콜라,1500,20];[사이다,1000,10]`
  * [ ] 상품이 한 개 이상인 경우 `세미콜론`으로 구분되어야 한다.
  * [ ] `개별 상품`은 `대괄호`로 묶여 있어야 한다.
+ * [ ] `개별 상품`의 형식이 잘못된 경우 예외를 던진다. ex) `[콜라,1500,20][콜라,1500,20]`, `[콜라,1500]`
  * [ ] `상품의 이름`이 `비어있는 경우` 예외를 던진다. ex) ``
  * [ ] `상품의 이름`이 `공백인 경우` 예외를 던진다. ex) ` `
  * [ ] `상품의 이름`은 중복될 수 없다. 중복된 경우 예외를 던진다. ✚
@@ -869,6 +870,7 @@ public class Product {
         inputProduct = inputProduct.replace(INPUT_PRODUCT_SUFFIX, EMPTY);
 
         String[] splitInputProduct = inputProduct.split(INPUT_PRODUCT_SPLIT_REGEX, INPUT_PRODUCT_SPLIT_LIMIT);
+        validateArrayLength(splitInputProduct.length);
 
         this.name = new Name(splitInputProduct[NAME_INDEX]);
         this.price = new Price(splitInputProduct[PRICE_INDEX]);
@@ -878,6 +880,12 @@ public class Product {
     private void validateStartWithAndEndWith(String inputProduct) {
         if (!(inputProduct.startsWith(INPUT_PRODUCT_PREFIX) && inputProduct.endsWith(INPUT_PRODUCT_SUFFIX))) {
             throw new IllegalArgumentException(VALID_START_END_WITH);
+        }
+    }
+
+    private void validateArrayLength(int length) {
+        if (length != DEFAULT_STRING_SPLIT_LENGTH) {
+            throw new IllegalArgumentException(VALID_STRING_SPLIT_LENGTH);
         }
     }
 

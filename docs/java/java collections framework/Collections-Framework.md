@@ -181,11 +181,8 @@ Each of these methods may be overridden if the collection being implemented admi
 ## References
 
 [Collections Framework Documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/doc-files/coll-index.html)<br>
-
 [Collections Framework Overview](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/doc-files/coll-overview.html)<br>
-
 [Class AbstractCollection](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/AbstractCollection.html)<br>
-
 [자바에서 Vector와 Stack 컬렉션이 쓰이지 않는 이유?](https://aahc.tistory.com/8)
 
 <TagLinks />

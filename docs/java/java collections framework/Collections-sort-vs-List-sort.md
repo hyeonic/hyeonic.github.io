@@ -189,11 +189,8 @@ Then, eventually, the new API takes over, and the older API is no longer require
 ## References
 
 [Class Collections](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collections.html#sort(java.util.List))<br>
-
 [Interface List](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html#sort(java.util.Comparator))<br>
-
 [Difference between Collections.sort(list) and list.sort(Comparator)](https://stackoverflow.com/questions/34910841/difference-between-collections-sortlist-and-list-sortcomparator)<br>
-
 [Why does Collections.sort(List) work in Java 8 with CopyOnWriteArrayList but not in Java 7?](https://stackoverflow.com/questions/34827309/why-does-collections-sortlist-work-in-java-8-with-copyonwritearraylist-but-not)
 
 <TagLinks />

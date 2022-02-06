@@ -1,15 +1,15 @@
 <template lang="html">
-    <div>
-        <p align=center>
-            <img :src=imageSrc />
-        </p>
-    </div>
+  <div>
+    <p align=center>
+    	<img :src=imageSrc />
+    </p>
+  </div>
 </template>
 
 <script>
 export default {
-    props: {
-        imageSrc: String
-    }
+  props: {
+    imageSrc: String
+  }
 }
 </script>

@@ -33,6 +33,7 @@ module.exports = {
         ],
         sidebar,
         lastUpdated: 'last updated',
+        smoothScroll: true
     },
     plugins: [
       ["@vuepress/back-to-top"],

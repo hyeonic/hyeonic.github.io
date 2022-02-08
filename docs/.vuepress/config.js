@@ -41,7 +41,8 @@ module.exports = {
       ["vuepress-plugin-code-copy"],
       ['@vuepress/search', {
         searchMaxSuggestions: 10
-      }]
+      }],
+      ["sitemap", { hostname: "https://hyeonic.github.io/"}]
     ],
     markdown: {
       extendMarkdown: md => {

@@ -42,7 +42,8 @@ module.exports = {
       ['@vuepress/search', {
         searchMaxSuggestions: 10
       }],
-      ["sitemap", { hostname: "https://hyeonic.github.io/"}]
+      ["sitemap", { hostname: "https://hyeonic.github.io/"}],
+      ['feed', { canonical_base: 'https://hyeonic.github.io' }]
     ],
     markdown: {
       extendMarkdown: md => {

@@ -1,6 +1,14 @@
 ---
 title: 01. 1단계 - 자동차 경주 구현
 tags: ['우아한테크코스', '미션']
+feed:
+  enable: true
+  title: 01. 1단계 - 자동차 경주 구현
+  author:
+    -
+      name: hyeonic
+      email: dev.hyeonic@gmail.com
+      link: https://hyeonic.github.io/woowacourse/level-1-mission/01-java-racing-car-step1.html
 ---
 
 # 01. 1단계 - 자동차 경주 구현

@@ -1,6 +1,7 @@
 ---
 title: 전략 패턴 활용 하기
 tags: ['우아한테크코스', 'prolog']
+date: 2022-02-16 23:00:00
 feed:
   enable: true
 ---

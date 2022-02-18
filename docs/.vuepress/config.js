@@ -3,7 +3,7 @@ const { sidebar } = getConfig();
 
 module.exports = {
     title: '배움을 기록',
-    description: 'hyeonic 기술 블로그',
+    description: '배움을 기록하기 위한 블로그입니다.',
     themeConfig: {
         nav: [
             {text: 'tag', link: '/해시태그/'},

@@ -6,7 +6,7 @@ feed:
   enable: true
 ---
 
-# 02. 아이템05 - 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라
+# 아이템05 - 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라
 
 <CenterImage image-src=https://user-images.githubusercontent.com/59357153/152970395-a31c8134-fc89-449f-b4dc-441e03df929c.png />
 

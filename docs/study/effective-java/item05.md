@@ -46,20 +46,6 @@ Lotto 클래스는 6자리의 로또 번호 리스트를 가진 일급 컬렉션
 ```java
 public class Lotto {
 
-    private final Set<LottoNumber> lottoNumbers;
-
-    public Lotto() {
-        List<Integer> numbers = AutoLottoNumberGenerator.generate(); // 사용
-        this.lottoNumbers = numbers.stream()
-                .map(LottoNumber::new)
-                .collect(toSet());
-    }
-}
-```
-
-```java
-public class Lotto {
-
     private static final int DEFAULT_LOTTO_NUMBERS_SIZE = 6;
 
     private final Set<LottoNumber> lottoNumbers;

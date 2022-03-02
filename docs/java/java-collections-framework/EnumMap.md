@@ -191,7 +191,7 @@ key의 순서는 NOTHING, FIFTH, SECOND, FIRST 순이다. 이것은 enum에서 �
 
 EnumMap은 열거 타입을 키로 사용하도록 설계하였고 내부적으로 배열을 사용하기 때문에 일반적으로 빠른 Map 구현체이다. 만약 Enum을 key로 활용한 구조가 필요하다면 EnumMap을 사용하면 된다.
 
-또한 이펙티브 자바 아이템 37에서는 `ordinal 인덱싱 대신 EnumMap을 사용하라`라고 언급했다. 보통의 개발자는 앞서 언급한 것 처럼 ordinal은 개발자를 위한 것이 아닌 `EnumMap`, `EnumSet`에서 사용하기 위한 메서드이다. 억지로 사용하기 보다 잘 제공된 Collections Framework를 사용하는 편이 났다.
+또한 이펙티브 자바 아이템 37에서는 `ordinal 인덱싱 대신 EnumMap을 사용하라`라고 언급했다. 앞서 언급한 것 처럼 ordinal은 개발자를 위한 것이 아닌 `EnumMap`, `EnumSet`에서 사용하기 위한 메서드이다. 억지로 사용하기 보다 잘 제공된 Collections Framework를 사용하는 편이 났다.
 
 ## References
 

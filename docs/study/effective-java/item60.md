@@ -133,7 +133,6 @@ BigDecimal을 생성하기 위해서는 다양한 방법이 존재한다.
 ```java
 BigDecimal bigDecimal1 = new BigDecimal("1.015");
 BigDecimal bigDecimal2 = new BigDecimal(1.015);
-BigDecimal bigDecimal3 = BigDecimal.valueOf(1.015);
 ```
 
 한 가지 주의해야 할 점은 문자열이 아닌 double 타입을 그대로 전달할 경우 앞서 언급한 근사치가 전달되기 때문에 오차가 생길 가능성이 있다.
@@ -141,6 +140,49 @@ BigDecimal bigDecimal3 = BigDecimal.valueOf(1.015);
 인텔리제이에서도 문자열로 변경하는 것을 권장하고 있다.
 
 <CenterImage image-src=https://user-images.githubusercontent.com/59357153/156875606-57cfaf8e-236f-4ea7-acd3-5c529bf1dd84.png />
+
+또한 일반적인 생성자를 활용하는 것 보다 정적 팩토리 메서드인 `valueOf`를 활용하여 생성하는 것을 권장한다. 
+
+```java
+BigDecimal bigDecimal = BigDecimal.valueOf(1.015);
+```
+
+아래는 BigDecimal의 일부 코드를 가져온 것이다.
+
+```java
+public class BigDecimal extends Number implements Comparable<BigDecimal> {
+    ...
+    // Cache of common small BigDecimal values.
+    private static final BigDecimal ZERO_THROUGH_TEN[] = {
+        new BigDecimal(BigInteger.ZERO,       0,  0, 1),
+        new BigDecimal(BigInteger.ONE,        1,  0, 1),
+        new BigDecimal(BigInteger.TWO,        2,  0, 1),
+        new BigDecimal(BigInteger.valueOf(3), 3,  0, 1),
+        new BigDecimal(BigInteger.valueOf(4), 4,  0, 1),
+        new BigDecimal(BigInteger.valueOf(5), 5,  0, 1),
+        new BigDecimal(BigInteger.valueOf(6), 6,  0, 1),
+        new BigDecimal(BigInteger.valueOf(7), 7,  0, 1),
+        new BigDecimal(BigInteger.valueOf(8), 8,  0, 1),
+        new BigDecimal(BigInteger.valueOf(9), 9,  0, 1),
+        new BigDecimal(BigInteger.TEN,        10, 0, 2),
+    };
+    ...
+    public static BigDecimal valueOf(long val) {
+        if (val >= 0 && val < ZERO_THROUGH_TEN.length)
+            return ZERO_THROUGH_TEN[(int)val];
+        else if (val != INFLATED)
+            return new BigDecimal(null, val, 0, 0);
+        return new BigDecimal(INFLATED_BIGINT, val, 0, 0);
+    }
+    ...
+    public static BigDecimal valueOf(double val) {
+        return new BigDecimal(Double.toString(val));
+    }
+    ...    
+}
+```
+
+valueOf를 활용할 경우 `캐싱된 값부터 탐색`하거나 혹은 double의 경우 `toString을 통해 변환`하여 생성하기 때문에 앞서 언급한 생성자를 통한 근사치를 신경쓰지 않아도 된다.
 
 ### 비교하기
 

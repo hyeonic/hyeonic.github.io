@@ -123,6 +123,7 @@ Java에서는 문제 상황을 알리는 타입(throwable)으로 `error`, `check
 
 ## References
 
+조슈아 블로크 지음, 개앞맴시(이복연) 옮김, 『이펙티브 자바』, 프로그래밍 인사이트(2020), p390-392. <br>
 [Checked Exception을 대하는 자세](https://cheese10yun.github.io/checked-exception/)<br>
 [아이템 75 : 예외는 상세 메시지에 실패 관련 정보를 담으라](https://github.com/woowacourse-study/2022-effective-java/blob/main/10%EC%9E%A5/%EC%95%84%EC%9D%B4%ED%85%9C_75/%EC%98%88%EC%99%B8%EB%8A%94_%EC%83%81%EC%84%B8_%EB%A9%94%EC%8B%9C%EC%A7%80%EC%97%90_%EC%8B%A4%ED%8C%A8_%EA%B4%80%EB%A0%A8_%EC%A0%95%EB%B3%B4%EB%A5%BC_%EB%8B%B4%EC%9C%BC%EB%9D%BC.md)<br>
 [[Java Study 9주차] 예외 처리](https://wisdom-and-record.tistory.com/46)

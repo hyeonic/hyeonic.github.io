@@ -131,7 +131,7 @@ public class JdbcTemplate extends JdbcAccessor implements JdbcOperations {
 
 정리하면 나는 명시적으로 `JdbcTempalate`를 등록하지 않았다. 그렇기 때문에 `@ConditionalOnMissingBean` 애너테이션의 조건에 만족하여 `자동 구성에서 제공하는 JdbcTemplate를 Bean`으로 등록하여 사용하고 있는 것이다.
 
-관련 키워드를 검색하기 위해 구글하던 중 `stackOverflow`에서 관련 된 글을 찾아볼 수 있었다.
+관련 키워드를 검색하기 위해 구글링하던 중 `stackOverflow`에서 관련 된 글을 찾아볼 수 있었다.
 
 ::: tip Question
 

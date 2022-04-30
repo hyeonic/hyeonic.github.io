@@ -191,7 +191,7 @@ public class LottoNumber {
 
 :::
 
-테스트 패키지 하우에 공통적으로 사용할 수 있는 데이터나 메서드를 모아 클래스를 생성하여 개선하였다.
+테스트 패키지 하위에 공통적으로 사용할 수 있는 데이터나 메서드를 모아 클래스를 생성하여 개선하였다.
 
 ```java
 public class LottoTestDataGenerator {

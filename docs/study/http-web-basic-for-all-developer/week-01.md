@@ -103,7 +103,7 @@ IP는 단순히 숫자의 조합으로 이루어져 있다. 즉 사람이 기억
 
 ## URI (Uniform Resource Identifier)
 
-<CenterImage image-src=https://user-images.githubusercontent.com/59357153/166127443-cfe851b3-32a0-4c5f-84e3-2c460100d7b8.png />
+<CenterImage image-src=https://user-images.githubusercontent.com/59357153/166171144-f475eec5-935f-4ebc-9ac6-6c1f2ac06233.png />
 
  * `URI`는 특정한 리소스를 `식별`하기 위한 용도로 활용된다.
  * `URI`는 세부적으로 `URL`과 `URN`을 포함한다.

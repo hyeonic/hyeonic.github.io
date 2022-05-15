@@ -26,7 +26,7 @@ Spring에서 Bean을 등록하기 위한 애노테이션의 차이에 대해 알
 
 ### @Component
 
-애플리케이션 전체에서 `@Componet`를 사용하여 Spring-managed component로 표시할 수 있다. Spring은 기본적으로 `@Component`가 명시된 객체를 `ApplicationContext`에 등록한다. 즉 `@Service`와 `@Repository`를 찾는 것이 아니라 내부에 작성된 `@Component`를 찾아 `ApplicationContext`에 등록하는 것이다.
+애플리케이션 전체에서 `@Component`를 사용하여 Spring-managed component로 표시할 수 있다. Spring은 기본적으로 `@Component`가 명시된 객체를 `ApplicationContext`에 등록한다. 즉 `@Service`와 `@Repository`를 찾는 것이 아니라 내부에 작성된 `@Component`를 찾아 `ApplicationContext`에 등록하는 것이다.
 
 아래는 실제 `Service`와 `Repository`의 내부 구현 코드를 가져온 것이다.
 

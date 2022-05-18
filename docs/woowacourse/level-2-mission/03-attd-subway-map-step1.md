@@ -76,12 +76,12 @@ public class StationAcceptanceTest extends AcceptanceTest {
 
 ## 다이나믹 테스트
 
-::: 리뷰 중 일부
+::: tip 리뷰 중 일부
 
 `리뷰어`: 위가 많아지다보니 코드가 약간 복잡함을 느꼈는데요.
 각 테스트를 메서드로 분리하거나, junit의 다이나믹 테스트를 고려해볼 수 있을 것 같아요.
 
-https://tecoble.techcourse.co.kr/post/2020-07-31-dynamic-test/
+[dynamic test](https://tecoble.techcourse.co.kr/post/2020-07-31-dynamic-test/)
 
 :::
 
@@ -256,7 +256,7 @@ public class StationService {
 
 그럼 delete에서 리소스관점에서 멱등성을 어기는 예는 '마지막 노선삭제 API' 일 것 같아요. 매번 실행해도 다른 결과를 반환하고 있어서요.
 
-https://developer.mozilla.org/ko/docs/Glossary/Idempotent
+[멱등성](https://developer.mozilla.org/ko/docs/Glossary/Idempotent)
 
 :::
 

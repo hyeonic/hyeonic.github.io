@@ -6,7 +6,7 @@ feed:
   enable: true
 ---
 
-# JdbcTemplate는 어디에?
+# Spring JDBC로 batch 활용하기
 
 <CenterImage image-src=https://user-images.githubusercontent.com/59357153/152970395-a31c8134-fc89-449f-b4dc-441e03df929c.png />
 
@@ -15,6 +15,8 @@ feed:
 `batch`란 데이터를 실시간으로 처리하는 것이 아니라 일괄적으로 모아 `한번에 처리`하는 것을 의미한다. `JdbcTemplate`의 `update` 메서드와 `batchUpdate`를 비교하여 배치로 진행한 것과 일반적으로 처리한 것에 어떠한 차이가 있는지 알아보려 한다.
 
 ## 프로젝트 세팅
+
+[github repository 바로가기](https://github.com/hyeonic/blog-code/tree/main/spring-jdbc-batch)
 
 우선 Spirng 환경에서 jdbc와 h2 DB를 활용하기 위해 아래와 같이 `build.gradle`에 의존성을 추가하였다.
 

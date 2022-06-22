@@ -14,7 +14,7 @@ feed:
 
 우아한테크코스에서 진행한 미션의 리뷰와 피드백에 대해 정리한다. 실제 리뷰는 [[Spring 장바구니 - 1단계] 매트(최기현) 미션 제출합니다.](https://github.com/woowacourse/jwp-shopping-cart/pull/16)에서 확인할 수 있다.
 
-## 06.1단계 - 장바구니 - 협업 미션 확인
+## 07. 1단계 - 장바구니 - 협업 미션 확인
 
 이번 미션에서는 실제 동작하는 서비스를 만들기 위한 백엔드, 프론트엔드의 협업을 경험하며 기존에 존재하는 레거시 코드를 기반으로 진행하게 되었다. 프론트와 원할한 협업을 위해 API 명세에 많은 시간을 투자했다. 또한 기존에 제공된 레거시 코드 위에서 기능을 추가하였기 때문에 기존에 작성된  테스트 코드가 최대한 망가지지 않도록 유지하며 새로운 기능을 추가하였다.
 
@@ -228,8 +228,8 @@ public class InvalidTokenFormatException extends RuntimeException {
 
 ## References.
 
-[JWT](https://jwt.io/)
-[HandlerMethodArgumentResolver](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/method/support/HandlerMethodArgumentResolver.html)
-[HttpHeaders](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/HttpHeaders.html)
+[JWT](https://jwt.io/)<br>
+[HandlerMethodArgumentResolver](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/method/support/HandlerMethodArgumentResolver.html)<br>
+[HttpHeaders](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/HttpHeaders.html)<br>
 
 <TagLinks />

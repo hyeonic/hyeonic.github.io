@@ -28,7 +28,7 @@ git 브랜치 전략 중 하나이다. 이것은 어떠한 기능을 나타내�
 
 <CenterImage image-src=https://blog.kakaocdn.net/dn/HBZOO/btq091L6Upo/Y9Jj7UaaKOGVHx5Iv0MW5k/img.png />
 
-다양한 기능을 제공하는 Team과 Enterprice는 월마다 일정 금액을 사용해야 한다. 하지만 학교 프로젝트 진행을 위해 생성하였기 때문에 Free만 사용하여도 충분한 실습과 프로젝트를 진행할 수 있다.
+다양한 기능을 제공하는 Team과 Enterprice는 월마다 일정 금액을 사용해야 한다. 하지만 간단한 프로젝트 진행을 위해 생성하였기 때문에 Free만 사용하여도 충분한 실습과 프로젝트를 진행할 수 있다.
 
 <CenterImage image-src=https://blog.kakaocdn.net/dn/21GLC/btq1dzgwljG/nqOUW4mgFZZfhYFS3W0qDk/img.png />
 

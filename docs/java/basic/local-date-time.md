@@ -257,7 +257,7 @@ public class LocalTimeTest {
 
 ### LocalDateTime
 
-::: tip 리뷰 중 일부
+::: tip 공식 문서 중 일부
 
 A date-time without a time-zone in the ISO-8601 calendar system, such as 2007-12-03T10:15:30. LocalDateTime is an immutable date-time object that represents a date-time, often viewed as year-month-day-hour-minute-second. Other date and time fields, such as day-of-year, day-of-week and week-of-year, can also be accessed. Time is represented to nanosecond precision. For example, the value "2nd October 2007 at 13:45.30.123456789" can be stored in a LocalDateTime.
 

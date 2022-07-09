@@ -28,4 +28,7 @@ git push -f https://github.com/hyeonic/hyeonic.github.io.git main:gh-pages
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
 
+# cd ..
+# rm /dist
+
 cd -

@@ -6,6 +6,8 @@ feed:
   enable: true
 ---
 
+[달록 기술 블로그 방문하기](https://dallog.github.io)
+
 > 이 글은 우테코 달록팀 크루 '[매트](https://github.com/hyeonic)'가 작성했습니다.
 
 ## Git-flow

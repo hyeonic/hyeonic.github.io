@@ -2,8 +2,6 @@
 title: IDENTITY 전략는 추가 조회를 하지 않을 수 있다.
 tags: ['우아한테크코스', 'jpa', 'IDENTITY']
 date: 2022-07-10 01:00:00
-feed:
-  enable: true
 ---
 
 # IDENTITY 전략는 추가 조회를 하지 않을 수 있다.

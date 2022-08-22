@@ -265,6 +265,7 @@ public class GoogleOAuthUri implements OAuthUri {
 
 ## References.
 
+[dallog repository](https://github.com/woowacourse-teams/2022-dallog)<br>
 [https://github.com/devHudi](https://github.com/devHudi)<br>
 [passport.js에서 구글 OAuth 진행 시 Refresh Token을 못 받아오는 문제 해결](https://m.blog.naver.com/dldbdgml99/222013891067)<br>
 

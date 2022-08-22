@@ -248,6 +248,17 @@ public class GoogleOAuthUri implements OAuthUri {
 
 정상적으로 발급 되는 것을 확인할 수 있다!
 
+## 문제점
+
+하지만 여기서 문제가 하나 있다. 단순히 `prompt`를 `consent`로 설정할 경우 우리 서비스에 가입된 사용자는 Google OAuth 2.0 인증을 진행할 때 매번 재로그인을 진행해야 한다. 이것은 사용자에게 매우 `불쾌한 경험`으로 다가올 수 있다. 즉 우리는 매번 `재로그인`을 통해 Refresh Token을 발급 받는 것이 아닌, 최초 로그인 시 `Refresh Token`을 발급 받은 뒤 적절한 저장소에 저장하고 관리해야 한다.
+
+그렇다면 실제 운영 환경이 아닌 테스트 환경에서는 어떻게 해야 할까? 운영 환경과 동일한 `Google Cloud Project`를 사용할 경우 최초 로그인을 진행할 때 `내 권한 정보가 등록`된다. 즉 Refresh Token을 재발급 받을 수 없다는 것을 의미한다. 
+
+우리 달록은 운영 환경과 테스트 환경에서 서로 다른 `Google Cloud Project`를 생성하여 관리하는 방향에 대해 고민하고 있다. 이미 Spring Profile 기능을 통해 각 실행 환경에 대한 설정을 분리해두었기 때문에 쉽게 적용이 가능할 것이라 기대한다. 정리하면 아래와 같다.
+
+ * `운영 환경`: Refresh Token 발급을 위해 `accept_type`을 `offline`으로 설정한다. 단 최초 로그인에만 Refresh Token을 발급 받기 위해 `prompt`는 명시하지 않는다.
+ * `개발 환경`: 개발 환경에서는 매번 DataBase가 초기화 되기 때문에 Refresh Token을 유지하여 관리할 수 없다. 테스트를 위한 추가적인 `Google Cloud Project`를 생성한 뒤, `accept_type`을 `offline`으로, `prompt`는 `consent`로 설정하여 매번 새롭게 Refresh Token을 받도록 세팅한다.
+
 ## 정리
 
 영어를 번역기로 해석한 수준의 문장으로 인해 많은 시간을 삽질하게 되었다. 덕분에 Google에서 의도하는 Refresh Token에 대한 사용 방식과 어디에서 저장하고 관리해야 하는지에 대해 좀 더 깊은 고민을 할 수 있게 되었다. 만약 나와 같은 상황에 직면한 사람이 있다면 이 글이 도움이 되길 바란다!

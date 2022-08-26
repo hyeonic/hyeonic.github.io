@@ -171,7 +171,7 @@ public interface EmbeddedCrewRepository extends JpaRepository<EmbeddedCrew, Long
 
 ## References.
 
-김영한, 『자바 ORM 표준 JPA 프로그래밍』, 에이콘(201), p251-254, p321-325. <br>
+김영한, 『자바 ORM 표준 JPA 프로그래밍』, 에이콘(2015), p251-254, p321-325. <br>
 [임베디드 타입과 @MappedSuperclass 차이](https://www.inflearn.com/questions/18578)
 
 <TagLinks />

@@ -329,7 +329,7 @@ public class CacheWebConfig implements WebMvcConfigurer {
 
 ### 더 개선하기
 
-`ETag`를 사용하기 때문에 `Last-Modified`는 불필요하다 판단할 수 있다. 하지만 `Last-Modified`는 캐싱 외에도 클러에게 마지막 수정 시간을 알려주기 때문에 크롤링 빈도를 조정할 수 있다고 한다. 고로 둘 다 적용하는 것이 바람직하다.
+`ETag`를 사용하기 때문에 `Last-Modified`는 불필요하다 판단할 수 있다. 하지만 `Last-Modified`는 캐싱 외에도 크롤러에게 마지막 수정 시간을 알려주기 때문에 크롤링 빈도를 조정할 수 있다고 한다. 고로 둘 다 적용하는 것이 바람직하다.
 
 ```java
 @Configuration

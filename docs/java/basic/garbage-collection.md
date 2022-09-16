@@ -1,9 +1,9 @@
 ---
-title: Garbage Collection 이란?
+title: Garbage Collection란?
 tags: ['Java', 'GC']
 ---
 
-# Garbage Collection 이란?
+# Garbage Collection 란?
 
 `Garbage Collection`은 `JVM` 상에서 더 이상 사용되지 않는 데이터가 할당되어 있는 메모리를 해제시켜준다. 보통 `GC`가 JVM `Heap 영역`에 있는 객체 중 참조되지 않는 데이터를 `자동적`으로 해제시켜주기 때문에 개발자는 `메모리 관리`를 `직접적으로 해줄 필요가 없다.`
 

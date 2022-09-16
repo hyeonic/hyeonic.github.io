@@ -141,6 +141,4 @@ true
 true
 ```
 
-## References
-
 <TagLinks />

@@ -6,11 +6,10 @@ module.exports = {
     description: '배움을 기록하기 위한 블로그입니다.',
     themeConfig: {
         nav: [
-            {text: 'tag', link: '/해시태그/'},
+            {text: 'tag', link: '/hash-tag/'},
             {text: 'problem solving', link: '/problem-solving/'},
             {text: 'java', link: '/java/'},
             {text: 'spring', link: '/spring/'},
-            {text: 'til', link: '/til/'},
             {
                 text: "Info",
                 items: [
@@ -22,6 +21,10 @@ module.exports = {
                   {
                     text: "project",
                     items: [
+                      {
+                        text: "dallog",
+                        link: "https://github.com/woowacourse-teams/2022-dallog"
+                      },
                       {
                         text: "music-ward",
                         link: "https://github.com/OPGG-HACKTHON/MusicWard-Server"

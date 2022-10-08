@@ -72,7 +72,7 @@ feed:
 
 `Transaction 1`에서 `INSERT`로 추가된 Member가 `COMMIT`되기 이전에 `Transaction 2`에서 조회를 진행하고 있다.
 
-하지만 `Transaction 1`에서 모종의 이유로 `ROLLBACK`된다고 가정한자. `Transcation 2`는 `ROLLBACK` 여부를 확인하지 못하고 정상적인 Member라 생각하고 계속 진행될 것이다.
+하지만 `Transaction 1`에서 모종의 이유로 `ROLLBACK`된다고 가정한다. `Transcation 2`는 `ROLLBACK` 여부를 확인하지 못하고 정상적인 Member라 생각하고 계속 진행될 것이다.
 
 ![](./transaction/dirty-read.png)
 

@@ -258,6 +258,7 @@ public class JdbcTemplate {
 [https://all-record.tistory.com/79](https://all-record.tistory.com/79)<br>
 [https://docs.oracle.com/javase/8/docs/api/java/sql/DriverManager.html](https://docs.oracle.com/javase/8/docs/api/java/sql/DriverManager.html)<br>
 [https://docs.oracle.com/javase/8/docs/api/javax/sql/DataSource.html](https://docs.oracle.com/javase/8/docs/api/javax/sql/DataSource.html)<br>
+[스프링 DB 1편 - 데이터 접근 핵심 원리](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-db-1#)<br>
 조슈아 블로크 지음, 개앞맴시(이복연) 옮김, 『이펙티브 자바』, 프로그래밍 인사이트(2020), p390-392.
 
 <TagLinks />

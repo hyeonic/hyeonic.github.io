@@ -97,7 +97,7 @@ public class HikariConfig implements HikariConfigMXBean {
 
 풀에서 유효하지 않은 커넥션을 검증하는 과정에서 추가적인 커넥션이 새로 생성된다. 즉 트래픽이 몰리는 시점에 성능 저하를 유발할 수 있다.
 
-## keepaliveTime
+### keepaliveTime
 
 커넥션이 살아 있는지 확인하는 주기이다. 유휴 커넥션에 대해 커넥션을 검증하고 유효하지 않은 경우 풀에서 제거한다. 제거 후 커넥션을 새로 생성한다.
 

@@ -174,6 +174,8 @@ HikariCP 문서에 따르면 설정하지 않는 것을 추천한다. 즉 maximu
 - `core_count * 2`: 코어 수에 근접할 수록 좋지만, 위에서 언급한 디스크 및 네트워크와 CPU의 속도차이로 인한 여유 시간을 활용하기 위해 계수 2를 곱해준다.
 - `effective_spindle_count`: 하드 디스크는 하나의 spindle을 가진다. spindle은 데이터베이스 서버가 관리할 수 있는 동시 I/O 요청 수를 말한다. 디스크가 `n개` 존재하면 `spindle_count`는 `n`이 될 수 있다.
 
+> PostgreSQL 공식 문서에 따르면 SSD에서는 얼마나 잘 작동하는지에 대한 분석은 아직까지 없다.
+
 하나의 하드 디스크가 있는 4-core i7 CPU를 가진 서버에서 `9 = (4 * 2) + 1`의 커넥션 풀을 설정해야 한다. 대략 10을 설정할 수 있다. 위 공식은 절대적인 것이 아니기 때문에 풀 크기를 선정할 때 기준으로 활용할 수 있다. 
 
 사용자가 10,000명이라고 커넥션 풀이 10,000개를 설정한 것은 굉장한 낭비에 가깝다. 1,000개도 많다. 심지어 100개의 커넥션도 과하다. 위에 언급한 바와 같이 `CPU core * 2` 보다 훨씬 많은 경우는 거의 없다. 데이터베이스를 과도하게 낭비하지 말자.
@@ -186,6 +188,7 @@ HikariCP 문서에 따르면 설정하지 않는 것을 추천한다. 즉 maximu
 [HikariCP Dead lock에서 벗어나기 (이론편)](https://techblog.woowahan.com/2663/)<br>
 [HikariCP Dead lock에서 벗어나기 (실전편)](https://techblog.woowahan.com/2664/)<br>
 [프로그래밍 초식: 커넥션풀 설정](https://www.youtube.com/watch?v=6Q7iRTb4tQE)<br>
-[내가 만든 서비스는 얼마나 많은 사용자가 이용할 수 있을까? - 3편(DB Connection Pool)](https://hyuntaeknote.tistory.com/m/12)
+[내가 만든 서비스는 얼마나 많은 사용자가 이용할 수 있을까? - 3편(DB Connection Pool)](https://hyuntaeknote.tistory.com/m/12)<br>
+[What is effective spindle count](https://dba.stackexchange.com/questions/228663/what-is-effective-spindle-count)
 
 <TagLinks />

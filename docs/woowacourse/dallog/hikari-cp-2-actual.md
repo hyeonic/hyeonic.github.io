@@ -1,12 +1,16 @@
 ---
-title: "HikariCP와 적절한 풀 사이즈 고민하기 (실전편)"
+title: "HikariCP와 적절한 풀 사이즈 고민하기 (2) - 실전편"
 tags: ['우아한테크코스', '달록', 'HikariCP', '데이터베이스 커넥션']
 date: 2022-10-18 17:00:00
 feed:
   enable: true
 ---
 
-# HikariCP와 적절한 풀 사이즈 고민하기 (실전편)
+# HikariCP와 적절한 풀 사이즈 고민하기 (2) - 실전편
+
+> [HikariCP와 적절한 풀 사이즈 고민하기 (1) - 이론편](https://hyeonic.github.io/woowacourse/dallog/hikari-cp-1-theory.html) <br>
+> 👉 [HikariCP와 적절한 풀 사이즈 고민하기 (2) - 실전편](https://hyeonic.github.io/woowacourse/dallog/hikari-cp-2-actual.html) <br>
+> [HikariCP와 적절한 풀 사이즈 고민하기 (3) - 삽질편](https://hyeonic.github.io/woowacourse/dallog/hikari-cp-3-spadework.html) <br>
 
 > HikariCP와 데이터베이스 커넥션 풀에 대해 궁금하신 분들은 [HikariCP와 적절한 풀 사이즈 고민하기 (이론편)](https://hyeonic.github.io/woowacourse/dallog/hikari-cp-theory.html)을 참고해주세요.
 
@@ -20,7 +24,7 @@ HikariCP 공식 문서에 따르면 디스크 및 네트워크의 `block` 시간
 
 우선 현재 우리가 사용하고 있는 데이터베이스 서버의 사양을 살펴보자.
 
-![](./hikari-cp-actual/t4gmicro.png)
+![](./hikari-cp-2-actual/t4gmicro.png)
 
 EC2 T4g 인스턴스는 `Arm` 기반 AWS Gravition2 프로세서로 구동되며 T3 인스턴스에 비해 최대 40% 더 나은 가격 성능을 제공한다. 다양한 상품이 존재하지만 우리에게 허락된 사양은 `2개의 vCPU`와 `1GB` 메모리를 가진 `t4g.micro` 뿐이었다.
 
@@ -53,7 +57,7 @@ CPU 코어의 개수는 `2개(core_count)`이며 `1개(effective_spindle_count)`
 
 먼저 우리 서비스에서 `주로 조회되는 API`를 기준으로 성능 테스트를 진행하였다. 달록에서 가장 많은 요청은 `한달 단위로 자신이 체크한 일정 정보를 조회하는 API`이다.
 
-![](./hikari-cp-actual/dallog-main-api.png)
+![](./hikari-cp-2-actual/dallog-main-api.png)
 
 실제 API는 아래와 같다.
 
@@ -97,7 +101,7 @@ ALTER TABLE schedules ADD INDEX idx_categories_id_start_date_time_end_date_time 
 
 먼저 가상의 사용자 `100명`이 위 API를 요청하는 상황을 가정한다.
 
-![](./hikari-cp-actual/jmeter-setting.png)
+![](./hikari-cp-2-actual/jmeter-setting.png)
 
 보다 더 유의미한 처리량을 확인하기 위해 `반복 횟수(loop count)`도 적절히 설정한다. 
 
@@ -107,7 +111,7 @@ ALTER TABLE schedules ADD INDEX idx_categories_id_start_date_time_end_date_time 
 
 먼저 처리량에 가장 큰 영향을 주는 커넥션 풀의 개수부터 조정하며 테스트를 진행했다.
 
-![](./hikari-cp-actual/test.png)
+![](./hikari-cp-2-actual/test.png)
 
 > 커넥션 풀의 개수가 스레드 풀의 개수보다 적으면 무의미하기 때문에 적절히 증가시켜 비교해보았다.
 
@@ -121,7 +125,7 @@ ALTER TABLE schedules ADD INDEX idx_categories_id_start_date_time_end_date_time 
 
 자 이제 커넥션의 최적의 개수는 찾았으니, 타임 아웃 시간을 지정해보자.
 
-![](./hikari-cp-actual/connectionTimeout.png)
+![](./hikari-cp-2-actual/connectionTimeout.png)
 
 큰 차이가 없는 것을 확인할 수 있다. 애초에 오랜시간 커넥션을 잡을 만한 로직이 아니기 때문에 이같은 결과가 나온 것으로 추측한다. 그럼에도 만일에 일을 대비하여 대략 3초로 설정해두었다.
 

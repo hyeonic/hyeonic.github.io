@@ -1,12 +1,16 @@
 ---
-title: "HikariCP와 적절한 풀 사이즈 고민하기 (이론편)"
+title: "HikariCP와 적절한 풀 사이즈 고민하기 (1) - 이론편"
 tags: ['우아한테크코스', '달록', 'HikariCP', '데이터베이스 커넥션']
 date: 2022-10-16 21:00:00
 feed:
   enable: true
 ---
 
-# HikariCP와 적절한 풀 사이즈 고민하기 (이론편)
+# HikariCP와 적절한 풀 사이즈 고민하기 (1) - 이론편
+
+> 👉 [HikariCP와 적절한 풀 사이즈 고민하기 (1) - 이론편](https://hyeonic.github.io/woowacourse/dallog/hikari-cp-1-theory.html) <br>
+> [HikariCP와 적절한 풀 사이즈 고민하기 (2) - 실전편](https://hyeonic.github.io/woowacourse/dallog/hikari-cp-2-actual.html) <br>
+> [HikariCP와 적절한 풀 사이즈 고민하기 (3) - 삽질편](https://hyeonic.github.io/woowacourse/dallog/hikari-cp-3-spadework.html) <br>
 
 `HikariCP`는 `connection pooling`을 제공하는 `JDBC DataSource 구현체`이다. 
 
@@ -44,7 +48,7 @@ feed:
 
 Spring Boot 2.0 이후 `HikariCP`를 default 커넥션 풀로 활용하고 있다.
 
-![](./hikari-cp-theory/hikari-dependency.png)
+![](./hikari-cp-1-theory/hikari-dependency.png)
 
 ## HikariCP 설정
 
@@ -155,7 +159,7 @@ HikariCP 문서에 따르면 설정하지 않는 것을 추천한다. 즉 maximu
 
 단일 CPU가 주어지면 `A와 B를 순차적으로 실행하는 것`이 `시분할을 통해 A와 B를 동시에 실행하는 것` 보다 항상 빠를 것이라는 것은 컴퓨팅의 기본 법칙이다. 스레드 수가 CPU 코어 수를 초과하면 단순히 스레드 수가 더 많아질 뿐이지 더 빠른 속도를 보장하는 것은 아니다. 즉 단순히 풀의 크기를 늘린다고 더 빠른 속도로 처리되는 것은 아니다.
 
-![](./hikari-cp-theory/thread-compare.png)
+![](./hikari-cp-1-theory/thread-compare.png)
 
 데이터베이스의 주요 병목 현상에 대해 살펴보면 CPU, 디스크, 네트워크 세 가지 관점으로 요약할 수 있다. 디스크와 네트워크를 무시하면 간단히 계산할 수 있다. 예시로 8개의 CPU 코어가 있는 서버가 있다고 가정하자. 서버는 커넥션 풀안에 커넥션 수를 8로 설정하면 최적의 성능을 제공할 수 있으며 이 이상의 커넥션을 생성할 경우 컨텍스트 스위칭의 오버헤드로 인해 속도는 느려질 것이다.
 
@@ -165,7 +169,7 @@ HikariCP 문서에 따르면 설정하지 않는 것을 추천한다. 즉 maximu
 
 네트워크도 디스크와 유사하다. 이더넷 인터페이스를 통해  유선으로 데이터를 작성하면 송/수신 버퍼가 가득차거나 멈출 때 `block`이 발생할 수 있다.
 
-![](./hikari-cp-theory/disk-io.png)
+![](./hikari-cp-1-theory/disk-io.png)
 
 다양한 상황을 고려 했을 때 PostgreSQL에서는 아래와 같은 공식을 제안했다. 또한 여러 데이터베이스에도 적용할 수 있다고 언급되어 있다. 
 

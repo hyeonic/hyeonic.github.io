@@ -12,8 +12,6 @@ feed:
 > 👉 [HikariCP와 적절한 풀 사이즈 고민하기 (2) - 실전편](https://hyeonic.github.io/woowacourse/dallog/hikari-cp-2-actual.html) <br>
 > [HikariCP와 적절한 풀 사이즈 고민하기 (3) - 삽질편](https://hyeonic.github.io/woowacourse/dallog/hikari-cp-3-spadework.html) <br>
 
-> HikariCP와 데이터베이스 커넥션 풀에 대해 궁금하신 분들은 [HikariCP와 적절한 풀 사이즈 고민하기 (이론편)](https://hyeonic.github.io/woowacourse/dallog/hikari-cp-theory.html)을 참고해주세요.
-
 [About Pool Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing)
 
 HikariCP 공식 문서에 따르면 디스크 및 네트워크의 `block` 시간을 고려하면 아래와 같은 공식을 제안했다. 또한 여러 데이터베이스에도 적용할 수 있다고 언급되어 있다. 

@@ -1,7 +1,7 @@
 ---
 title: "SimpleJpaRepository의 save()는 어떻게 새로운 엔티티를 판단할까?"
 tags: ['우아한테크코스', 'JPA', 'save', 'persist', 'merge']
-date: 2022-10-24 20:00:00
+date: 2022-11-21 00:00:00
 feed:
   enable: true
 ---

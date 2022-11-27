@@ -14,7 +14,7 @@ feed:
 
 ## SimpleJpaRepository
 
-`SimpleJpaRepository`는 `org.springframework.data.repository.CrudRepository` 인터페이스의 기본 구현이다. 이것은 일반 `EntityManager` 보다 더 정교한 인터페이스를 제공합니다. 먼저 엔티티를 영속 시키기 위한 `save()` 메서드를 중점적으로 살펴보려한다. 예시를 살펴보기 위해 먼저 Member 엔티티를 선언한다.
+`SimpleJpaRepository`는 `org.springframework.data.repository.CrudRepository` 인터페이스의 기본 구현이다. 이것은 일반 `EntityManager` 보다 더 정교한 인터페이스를 제공한다. 먼저 엔티티를 영속 시키기 위한 `save()` 메서드를 중점적으로 살펴보려한다. 예시를 살펴보기 위해 먼저 Member 엔티티를 선언한다.
 
 ```java
 @Entity

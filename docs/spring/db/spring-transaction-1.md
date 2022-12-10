@@ -1,12 +1,17 @@
 ---
 title: "스프링이 개선한 트랜잭션 (1)"
 tags: ['스프링', '트랜잭션']
-date: 2022-12-10 12:00:00
+date: 2022-12-10 00:00:00
 feed:
   enable: true
 ---
 
 # 스프링이 개선한 트랜잭션 (1)
+
+> 👉 [스프링이 개선한 트랜잭션 (1)](https://hyeonic.github.io/spring/db/spring-transaction-1.html) <br>
+> [스프링이 개선한 트랜잭션 (2)](https://hyeonic.github.io/spring/db/spring-transaction-2.html) <br>
+
+> 작성에 사용된 예제 코드는 [spring-transaction](https://github.com/hyeonic/blog-code/tree/main/spring-transaction)에서 확인해볼 수 있다.
 
 트랜잭션은 논리적인 작업 셋을 모두 완벽하게 처리하거나, 처리하지 못할 경우 원래 상태로 복구하여 작업의 일부만 적용되는 현상(Partial update)을 막아준다.
 
@@ -68,7 +73,7 @@ SQLException 등)을 가지게 되기 때문에 변경에 유연하지 못한 �
 현재 service 계층은 dataSource를 통해 커넥션 객체를 획득하고 있다. 또한 커넥션 객체의 `setAutoCommit()` 메서드를 통해 트랜잭션을 시작하고 있다. 만약 다른 데이터 접근 기술로
 변경된다면 어떻게 될까? 실제로 순수한 JPA를 사용할 경우 아래와 같은 과정을 거쳐 트랜잭션을 시작할 수 있다.
 
-```
+```java
 EntityTransaction entityTransaction = entityManager.getTranaction();
 entityTransaction.begin();
 ```

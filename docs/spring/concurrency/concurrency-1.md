@@ -1,5 +1,5 @@
 ---
-title: "🚗 차근차근 동시성 이슈 해결하기 (1) - synchronized"
+title: "🚗 차근차근 동시성 이슈 해결하기 (1)"
 tags: ['동시성', 'synchronized']
 date: 2022-12-11 17:00:00
 feed:
@@ -9,6 +9,7 @@ feed:
 # 🚗 차근차근 동시성 이슈 해결하기 (1)
 
 > 👉 [🚗 차근차근 동시성 이슈 해결하기 (1) - synchronized](https://hyeonic.github.io/spring/db/spring-transaction-1.html) <br>
+> [🚗 차근차근 동시성 이슈 해결하기 (2) - Pessimistic Lock](https://hyeonic.github.io/spring/db/spring-transaction-1.html) <br>
 
 > 작성에 사용된 예제 코드는 [concurrency-synchronized](https://github.com/hyeonic/blog-code/tree/main/concurrency-synchronized)에서 확인해볼 수 있다.
 

@@ -1,6 +1,6 @@
 ---
 title: "🚗 차근차근 동시성 이슈 해결하기 (2)"
-tags: ['동시성', 'synchronized']
+tags: ['동시성', '비관적 락']
 date: 2022-12-12 16:00:00
 feed:
   enable: true
@@ -9,7 +9,7 @@ feed:
 # 🚗 차근차근 동시성 이슈 해결하기 (2)
 
 > [🚗 차근차근 동시성 이슈 해결하기 (1) - synchronized](https://hyeonic.github.io/spring/db/spring-transaction-1.html) <br>
-> 👉 [🚗 차근차근 동시성 이슈 해결하기 (2) - Pessimistic Lock](https://hyeonic.github.io/spring/db/spring-transaction-1.html) <br>
+> 👉 [🚗 차근차근 동시성 이슈 해결하기 (2) - Pessimistic Lock](https://hyeonic.github.io/spring/db/spring-transaction-2.html) <br>
 
 > 작성에 사용된 예제 코드는 [concurrency-pessimistic-lock](https://github.com/hyeonic/blog-code/tree/main/concurrency-pessimistic-lock)에서 확인해볼 수 있다.
 

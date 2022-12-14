@@ -6,8 +6,7 @@ module.exports = {
     description: '배움을 기록하기 위한 블로그입니다.',
     themeConfig: {
         nav: [
-            {text: 'tag', link: '/hash-tag/'},
-            {text: 'problem solving', link: '/problem-solving/'},
+            {text: 'tag', link: '/﹟hash-tag/'},
             {text: 'java', link: '/java/'},
             {text: 'spring', link: '/spring/'},
             {

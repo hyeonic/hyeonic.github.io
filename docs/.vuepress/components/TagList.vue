@@ -3,7 +3,7 @@
     <span v-for="tag in Object.keys(tags)">
       <h2 :id="tag">
        <router-link
-          :to="{ path: `/hash-tag/#${tag}` }"
+          :to="{ path: `/﹟hash-tag/#${tag}` }"
           class="header-anchor"
           aria-hidden="true"
           >#</router-link

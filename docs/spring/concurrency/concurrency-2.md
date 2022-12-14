@@ -11,6 +11,7 @@ feed:
 > [🚗 차근차근 동시성 이슈 해결하기 (1) - synchronized](https://hyeonic.github.io/spring/concurrency/concurrency-1.html) <br>
 > 👉 [🚗 차근차근 동시성 이슈 해결하기 (2) - Pessimistic Lock](https://hyeonic.github.io/spring/concurrency/concurrency-2.html) <br>
 > [🚗 차근차근 동시성 이슈 해결하기 (3) - Optimistic Lock](https://hyeonic.github.io/spring/concurrency/concurrency-3.html) <br>
+> [🚗 차근차근 동시성 이슈 해결하기 (4) - Named Lock](https://hyeonic.github.io/spring/concurrency/concurrency-4.html) <br>
 
 > 작성에 사용된 예제 코드는 [concurrency-pessimistic-lock](https://github.com/hyeonic/blog-code/tree/main/concurrency-pessimistic-lock)에서 확인해볼 수 있다.
 

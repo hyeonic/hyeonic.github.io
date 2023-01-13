@@ -1,5 +1,9 @@
 # Archive
 
+## 회고
+
+ * [조금 늦은 2022년 회고](https://hyeonic.github.io/retrospect/2022-retrospect.html)
+
 ## 🚗 차근차근 동시성 이슈 해결하기
 
  * [🚗 차근차근 동시성 이슈 해결하기 (1) - synchronized](https://hyeonic.github.io/spring/concurrency/concurrency-1.html)

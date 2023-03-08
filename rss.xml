@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>배움을 기록</title>
+        <link>https://hyeonic.github.io</link>
+        <description>배움을 기록하기 위한 블로그입니다.</description>
+        <lastBuildDate>Wed, 08 Mar 2023 13:35:55 GMT</lastBuildDate>
+        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+        <generator>https://github.com/webmasterish/vuepress-plugin-feed</generator>
+        <atom:link href="https://hyeonic.github.io/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[조금 늦은 2022년 회고]]></title>
+            <link>https://hyeonic.github.io/retrospect/2022-retrospect.html</link>
+            <guid>https://hyeonic.github.io/retrospect/2022-retrospect.html</guid>
+            <pubDate>Thu, 12 Jan 2023 21:00:00 GMT</pubDate>
+            <description><![CDATA[2022년은 내게 조금은 특별한 해이다. 단순히 기술적인 성장을 넘어 한 사람으로서의 가치관을 형성할 수 있었던 시기였다. 회고를 통해 지난 1년을 뒤돌아보며 점검할 수 있는 회고를 적어보려 한다.]]></description>
+            <enclosure url="https://hyeonic.github.io/./2022-restrospect/1.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[🚗 차근차근 동시성 이슈 해결하기 (5)]]></title>
+            <link>https://hyeonic.github.io/spring/concurrency/concurrency-5.html</link>
+            <guid>https://hyeonic.github.io/spring/concurrency/concurrency-5.html</guid>
+            <pubDate>Wed, 14 Dec 2022 23:00:00 GMT</pubDate>
+            <description><![CDATA[🚗 차근차근 동시성 이슈 해결하기 (2) - Pessimistic Lock
+> 🚗 차근차근 동시성 이슈 해결하기 (3) - Optimistic Lock
+> 🚗 차근차근 동시성 이슈 해결하기 (4) - Named Lock
+> 👉 🚗 차근차근 동시성 이슈 해결하기 (5) - Spinlock]]></description>
+            <enclosure url="https://hyeonic.github.io/./concurrency-5/1.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[🚗 차근차근 동시성 이슈 해결하기 (4)]]></title>
+            <link>https://hyeonic.github.io/spring/concurrency/concurrency-4.html</link>
+            <guid>https://hyeonic.github.io/spring/concurrency/concurrency-4.html</guid>
+            <pubDate>Wed, 14 Dec 2022 17:00:00 GMT</pubDate>
+            <description><![CDATA[네임드 락은 GET_LOCK() 함수를 활용하여 임의의 문자열에 대한 잠금을 설정할 수 있다. 단순히 사용자가 지정한 문자열에 대한 락을 획득하고 반납한다.]]></description>
+            <enclosure url="https://hyeonic.github.io/./concurrency-4/1.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[🚗 차근차근 동시성 이슈 해결하기 (3)]]></title>
+            <link>https://hyeonic.github.io/spring/concurrency/concurrency-3.html</link>
+            <guid>https://hyeonic.github.io/spring/concurrency/concurrency-3.html</guid>
+            <pubDate>Tue, 13 Dec 2022 23:00:00 GMT</pubDate>
+            <description><![CDATA[이점이 많다.]]></description>
+            <enclosure url="https://hyeonic.github.io/./concurrency-3/1.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[🚗 차근차근 동시성 이슈 해결하기 (2)]]></title>
+            <link>https://hyeonic.github.io/spring/concurrency/concurrency-2.html</link>
+            <guid>https://hyeonic.github.io/spring/concurrency/concurrency-2.html</guid>
+            <pubDate>Mon, 12 Dec 2022 16:00:00 GMT</pubDate>
+            <description><![CDATA[예제 코드는 이전에 synchronized를 활용한 동시성 이슈 해결에서 사용한 Product 엔티티를 재사용할 것이다. 추가된 부분은 x-lock을 건 뒤 조회하는 메서드가 추가 되었다.]]></description>
+            <enclosure url="https://hyeonic.github.io/./concurrency-2/1.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[🚗 차근차근 동시성 이슈 해결하기 (1)]]></title>
+            <link>https://hyeonic.github.io/spring/concurrency/concurrency-1.html</link>
+            <guid>https://hyeonic.github.io/spring/concurrency/concurrency-1.html</guid>
+            <pubDate>Sun, 11 Dec 2022 17:00:00 GMT</pubDate>
+            <description><![CDATA[먼저 이번 글에서 사용하는 예제 코드를 살펴보자. 아래는 특정 상품을 나타내기 위한 Product 엔티티이다. Product는 이름과 한정된 개수를 나타내는 quantity를 가지고 있다.]]></description>
+            <enclosure url="https://hyeonic.github.io/./concurrency-1/1.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[문자열 생성 방식 비교하기]]></title>
+            <link>https://hyeonic.github.io/java/basic/java-string.html</link>
+            <guid>https://hyeonic.github.io/java/basic/java-string.html</guid>
+            <pubDate>Sat, 10 Dec 2022 17:00:00 GMT</pubDate>
+            <description><![CDATA[}
+}
+`]]></description>
+            <enclosure url="https://hyeonic.github.io/./java-string/1.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[스프링이 개선한 트랜잭션 (2)]]></title>
+            <link>https://hyeonic.github.io/spring/db/spring-transaction-2.html</link>
+            <guid>https://hyeonic.github.io/spring/db/spring-transaction-2.html</guid>
+            <pubDate>Sat, 10 Dec 2022 13:00:00 GMT</pubDate>
+            <description><![CDATA[public class TransactionTemplate extends DefaultTransactionDefinition
+        implements TransactionOperations, InitializingBean {
+    // ...
+    public  T execute(TransactionCallback action) throws TransactionException {
+        // ...
+        T result;
+        try {
+            result = action.doInTransaction(status);
+        } catch (RuntimeException | Error ex) {
+            // Transactional code threw application exception -> rollback
+            rollbackOnException(status, ex);
+            throw ex;
+            // ...
+            this.transactionManager.commit(status);
+            return result;
+        }
+        // ...
+    }
+    // ...
+}
+`]]></description>
+        </item>
+        <item>
+            <title><![CDATA[스프링이 개선한 트랜잭션 (1)]]></title>
+            <link>https://hyeonic.github.io/spring/db/spring-transaction-1.html</link>
+            <guid>https://hyeonic.github.io/spring/db/spring-transaction-1.html</guid>
+            <pubDate>Sat, 10 Dec 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[new Account(account.getId(), account.getHolder(), account.getAmount() - amount));
+            connection.commit();
+        } catch (final SQLException e) {
+            connection.rollback();
+            throw new RuntimeException(e);
+        }
+    }
+    // ...
+}
+`]]></description>
+        </item>
+        <item>
+            <title><![CDATA[낙관적 락과 동시성 테스트]]></title>
+            <link>https://hyeonic.github.io/jpa/basic/optimistic-locking.html</link>
+            <guid>https://hyeonic.github.io/jpa/basic/optimistic-locking.html</guid>
+            <pubDate>Sat, 03 Dec 2022 12:00:00 GMT</pubDate>
+            <description><![CDATA[}]]></description>
+            <enclosure url="https://hyeonic.github.io/./optimistic-locking/version.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[SimpleJpaRepository의 save()는 어떻게 새로운 엔티티를 판단할까?]]></title>
+            <link>https://hyeonic.github.io/jpa/basic/save-persist-merge.html</link>
+            <guid>https://hyeonic.github.io/jpa/basic/save-persist-merge.html</guid>
+            <pubDate>Mon, 21 Nov 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[그렇다면 isNew()는 어떻게 새로운 entity인지 확인할까? 구현 코드를 살펴보자.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[HikariCP와 적절한 풀 사이즈 고민하기 (3) - 삽질편]]></title>
+            <link>https://hyeonic.github.io/woowacourse/dallog/hikari-cp-3-spadework.html</link>
+            <guid>https://hyeonic.github.io/woowacourse/dallog/hikari-cp-3-spadework.html</guid>
+            <pubDate>Tue, 01 Nov 2022 12:00:00 GMT</pubDate>
+            <description><![CDATA[);
+        }
+        ...
+    }
+}
+`]]></description>
+            <enclosure url="https://hyeonic.github.io/./hikari-cp-3-spadework/1.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[OSIV와 사용하며 직면한 문제]]></title>
+            <link>https://hyeonic.github.io/jpa/basic/osiv.html</link>
+            <guid>https://hyeonic.github.io/jpa/basic/osiv.html</guid>
+            <pubDate>Mon, 24 Oct 2022 20:00:00 GMT</pubDate>
+            <description><![CDATA[spring:
+    jpa:
+        open-in-view: true
+`]]></description>
+            <enclosure url="https://hyeonic.github.io/./osiv/1.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[HikariCP와 적절한 풀 사이즈 고민하기 (2) - 실전편]]></title>
+            <link>https://hyeonic.github.io/woowacourse/dallog/hikari-cp-2-actual.html</link>
+            <guid>https://hyeonic.github.io/woowacourse/dallog/hikari-cp-2-actual.html</guid>
+            <pubDate>Tue, 18 Oct 2022 17:00:00 GMT</pubDate>
+            <description><![CDATA[보다 더 유의미한 처리량을 확인하기 위해 반복 횟수(loop count)도 적절히 설정한다.]]></description>
+            <enclosure url="https://hyeonic.github.io/./hikari-cp-2-actual/t4gmicro.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[HikariCP와 적절한 풀 사이즈 고민하기 (1) - 이론편]]></title>
+            <link>https://hyeonic.github.io/woowacourse/dallog/hikari-cp-1-theory.html</link>
+            <guid>https://hyeonic.github.io/woowacourse/dallog/hikari-cp-1-theory.html</guid>
+            <pubDate>Sun, 16 Oct 2022 21:00:00 GMT</pubDate>
+            <description><![CDATA[...
+    private static final long MAX_LIFETIME = MINUTES.toMillis(30);
+    ...
+}
+`]]></description>
+            <enclosure url="https://hyeonic.github.io/./hikari-cp-1-theory/hikari-dependency.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[커버링 인덱스]]></title>
+            <link>https://hyeonic.github.io/database/basic/covering-index.html</link>
+            <guid>https://hyeonic.github.io/database/basic/covering-index.html</guid>
+            <pubDate>Mon, 10 Oct 2022 12:00:00 GMT</pubDate>
+            <description><![CDATA[`]]></description>
+            <enclosure url="https://hyeonic.github.io/./covering-index/image-1.png">
+            </enclosure>
+        </item>
+        <item>
+            <title><![CDATA[jdbcTemplate을 만들며 마주한 Template Callback 패턴]]></title>
+            <link>https://hyeonic.github.io/spring/basic/template-callback.html</link>
+            <guid>https://hyeonic.github.io/spring/basic/template-callback.html</guid>
+            <pubDate>Sun, 09 Oct 2022 17:00:00 GMT</pubDate>
+            <description><![CDATA[JdbcTemplate은 아래와 같은 일을 담당한다.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[IoC 컨테이너]]></title>
+            <link>https://hyeonic.github.io/spring/basic/ioc-container.html</link>
+            <guid>https://hyeonic.github.io/spring/basic/ioc-container.html</guid>
+            <pubDate>Sat, 08 Oct 2022 18:00:00 GMT</pubDate>
+            <description><![CDATA[public User findById(long id) {
+        try (final var connection = dataSource.getConnection()) {
+            return users.get(id);
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+            return null;
+        }
+    }
+}
+`]]></description>
+        </item>
+        <item>
+            <title><![CDATA[JDBC]]></title>
+            <link>https://hyeonic.github.io/java/jdbc/jdbc.html</link>
+            <guid>https://hyeonic.github.io/java/jdbc/jdbc.html</guid>
+            <pubDate>Sat, 08 Oct 2022 10:00:00 GMT</pubDate>
+            <description><![CDATA[@Override
+  void setLoginTimeout(int seconds) throws SQLException;]]></description>
+        </item>
+        <item>
+            <title><![CDATA[cyclic dependency]]></title>
+            <link>https://hyeonic.github.io/woowacourse/dallog/cyclic-dependency.html</link>
+            <guid>https://hyeonic.github.io/woowacourse/dallog/cyclic-dependency.html</guid>
+            <pubDate>Fri, 30 Sep 2022 17:00:00 GMT</pubDate>
+            <description><![CDATA[...
+public class Subscriptions {
+    ...
+    public Color findColor(final IntegrationSchedule schedule) {
+        return subscriptions.stream()
+                .filter(schedule::isSameCategory)
+                .findAny()
+                .orElseThrow(() -> new NoSuchCategoryException("구독하지 않은 카테고리 입니다."))
+                .getColor();
+    }
+    ...
+}
+`]]></description>
+            <enclosure url="https://hyeonic.github.io/./cyclic-dependency/image-1.png">
+            </enclosure>
+        </item>
+    </channel>
+</rss>

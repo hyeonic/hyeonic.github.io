@@ -155,6 +155,7 @@ module.exports = {
               {
                 allMarkdownRemark(
                   sort: { order: DESC, fields: [frontmatter___date] },
+                  filter: { frontmatter: { feed: { enable: { eq: true } } } } 
                 ) {
                   edges {
                     node {

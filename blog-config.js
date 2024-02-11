@@ -2,7 +2,7 @@ module.exports = {
   title: "나누면 배가 되고",
   description: "나누면 배가 되고",
   author: "Hyeonic",
-  siteUrl: "https://hyeonic.github.io/gatsby-starter-hoodie/",
+  siteUrl: "https://hyeonic.github.io/",
   links: {
     github: "https://github.com/hyeonic",
     linkedIn: "https://www.linkedin.com/in/%EA%B8%B0%ED%98%84-%EC%B5%9C-1240aa225/",

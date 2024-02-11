@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://hyeonic.github.io/sitemap.xml
+Sitemap: https://hyeonic.github.io/sitemap-index.xml
+Host: https://hyeonic.github.io
